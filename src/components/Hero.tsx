@@ -32,7 +32,7 @@ const Hero = () => {
             <Link to="/contact">Book Now</Link>
           </Button>
           
-          <Button asChild variant="outline" className="btn-outline-spa text-lg px-12 py-4 border-spa-dark-foreground text-spa-dark-foreground hover:bg-spa-dark-foreground hover:text-spa-dark">
+          <Button asChild variant="outline" className="btn-outline-spa text-lg px-12 py-4 border-spa-dark-foreground text-black hover:bg-spa-dark-foreground hover:text-spa-dark">
             <Link to="/services">View Services</Link>
           </Button>
         </div>
