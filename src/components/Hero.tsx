@@ -28,7 +28,7 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button asChild className="btn-luxury text-lg px-12 py-4">
+          <Button asChild className="btn-luxury text-lg px-12 py-4 text-spa-sage-dark">
             <Link to="/contact">Book Now</Link>
           </Button>
           
