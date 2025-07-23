@@ -201,7 +201,7 @@ All colors MUST be HSL.
 
   /* Service Cards */
   .service-card {
-    @apply group bg-card rounded-2xl overflow-hidden shadow-soft border border-border transition-all duration-300 hover:shadow-luxury hover:-translate-y-2;
+    @apply bg-card rounded-2xl overflow-hidden shadow-soft border border-border transition-all duration-300 hover:shadow-luxury hover:-translate-y-2;
   }
   
   .service-price {
