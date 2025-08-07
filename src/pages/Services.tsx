@@ -107,10 +107,10 @@ const Services = () => {
   const waxingServices = [
     { name: "Brows", duration: "15 mins", price: "$12" },
     { name: "Brows + Mapping", duration: "20 mins", price: "$20" },
-    { name: "Top Lip", duration: "10 mins", price: "$8" },
+    { name: "Top Lip", duration: "10 mins", price: "$5" },
     { name: "Chin", duration: "10 mins", price: "$5" },
     { name: "Sideburns", duration: "15 mins", price: "$10" },
-    { name: "Full Face", duration: "30 mins", price: "$25" },
+    { name: "Full Face", duration: "30 mins", price: "$20" },
     { name: "Underarm", duration: "15 mins", price: "$20" },
     { name: "Full Arm", duration: "30 mins", price: "$30" },
     { name: "Bikini", duration: "30 mins", price: "$40" }
@@ -119,7 +119,7 @@ const Services = () => {
   const addOns = [
     { name: "Eye Treatment", price: "$35" },
     { name: "Lip Treatment", price: "$20" },
-    { name: "LED Light Therapy", price: "$15" },
+    { name: "LED Light Therapy + Massage + Exfoliation with Paraffin + Wax Service", price: "$15" },
     { name: "BT Micro", price: "$15" },
     { name: "Galvanic/Radio Therapy", price: "$20" },
     { name: "Gua Sha", price: "$15" },
@@ -195,7 +195,7 @@ const Services = () => {
       {/* Hero Section */}
       <section className="section-gradient py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="heading-luxury text-foreground mb-6">
+          <h1 className="font-lavish text-5xl md:text-6xl text-foreground mb-6">
             Our <span className="text-primary">Services</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import signatureFacial from '@/assets/signature-facial.jpg';
 import bodyTreatment from '@/assets/body-treatment.jpg';
 import lashExtensions from '@/assets/lash-extensions.jpg';
+const faceTreatmentImage = '/lovable-uploads/6240f13e-63be-4d28-ab8d-087c1f0a391c.png';
 
 const FeaturedServices = () => {
   const services = [
@@ -11,7 +12,7 @@ const FeaturedServices = () => {
       description: 'Our signature facial uses high-frequency technology, exfoliation, and serums to restore your skin\'s natural balance.',
       price: '$75',
       duration: '60 mins',
-      image: signatureFacial,
+      image: faceTreatmentImage,
     },
     {
       title: 'Full Body Treatment',

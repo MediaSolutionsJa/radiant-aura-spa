@@ -46,15 +46,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-2 text-spa-dark-foreground/70">
                 <Phone className="w-4 h-4" />
-                <span>(860) 849-8064</span>
+                <span>+1 (959) 250-8598</span>
               </li>
               <li className="flex items-center space-x-2 text-spa-dark-foreground/70">
                 <Mail className="w-4 h-4" />
-                <span>hello@auraessence.com</span>
+                <span>essenceaura990@gmail.com</span>
               </li>
               <li className="flex items-start space-x-2 text-spa-dark-foreground/70">
                 <MapPin className="w-4 h-4 mt-1" />
-                <span>123 Wellness Ave<br />Luxury District, CT 06001</span>
+                <span>MHD SUITE 101<br />410 Middle Turnpike W<br />Manchester, 06040</span>
               </li>
             </ul>
           </div>

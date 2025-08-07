@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				serif: ['Playfair Display', 'serif'],
 				sans: ['Montserrat', 'sans-serif'],
+				lavish: ['Lavish', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

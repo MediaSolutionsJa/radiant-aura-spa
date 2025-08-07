@@ -1,19 +1,20 @@
+import { useTranslation } from 'react-i18next';
+
 const Mission = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="section-dark py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="heading-spa text-spa-dark-foreground mb-8">
-          Our <span className="text-luxury-gold">Mission</span>
+        <h2 className="font-lavish text-3xl md:text-4xl text-spa-dark-foreground mb-8">
+          {t('missionTitle')} <span className="text-luxury-gold">Mission</span>
         </h2>
         
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent rounded-2xl"></div>
           <div className="relative bg-spa-dark/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-luxury-gold/20">
             <p className="text-lg md:text-xl text-spa-dark-foreground/90 leading-relaxed">
-              At Aura Essence, our mission is to create a luxurious sanctuary where beauty, wellness, and inner glow meet. 
-              We deliver high-end, personalized treatments that enhance your skin while restoring peace, confidence, and self-love. 
-              Through a calming, radiant experience, we help every client feel seen, valued, and empowered—because true beauty 
-              begins with a <span className="text-luxury-gold font-semibold">glow from within</span>.
+              {t('missionText')}
             </p>
           </div>
         </div>

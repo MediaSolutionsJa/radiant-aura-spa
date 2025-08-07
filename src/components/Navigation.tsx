@@ -2,18 +2,21 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from '@/components/LanguageToggle';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Packages', href: '/packages' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('home'), href: '/' },
+    { name: t('about'), href: '/about' },
+    { name: t('services'), href: '/services' },
+    { name: t('packages'), href: '/packages' },
+    { name: t('gallery'), href: '/gallery' },
+    { name: t('contact'), href: '/contact' },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -46,12 +49,14 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild className="btn-spa">
-              <Link to="/contact">Book Now</Link>
+              <Link to="/contact">{t('bookNow')}</Link>
             </Button>
+            <LanguageToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageToggle />
             <Button
               variant="ghost"
               size="sm"
@@ -83,7 +88,7 @@ const Navigation = () => {
               ))}
               <div className="px-3 py-2">
                 <Button asChild className="btn-spa w-full">
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>Book Now</Link>
+                  <Link to="/contact" onClick={() => setIsOpen(false)}>{t('bookNow')}</Link>
                 </Button>
               </div>
             </div>
