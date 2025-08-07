@@ -9,7 +9,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="section-gradient py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="heading-luxury text-foreground mb-6">
+          <h1 className="font-lavish text-5xl md:text-6xl text-foreground mb-6">
             About <span className="text-primary">Aura Essence</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

@@ -61,7 +61,7 @@ const Testimonials = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="heading-spa text-foreground mb-4">
+          <h2 className="font-lavish text-4xl md:text-5xl text-foreground mb-4">
             What Our Clients <span className="text-primary">Say</span>
           </h2>
           <p className="text-lg text-muted-foreground">

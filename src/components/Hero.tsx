@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageToggle from '@/components/LanguageToggle';
 import heroImage from '@/assets/hero-spa.jpg';
 
 const Hero = () => {
@@ -30,11 +29,6 @@ const Hero = () => {
           />
           <div className="absolute inset-0 bg-spa-dark/60"></div>
         </div>
-      </div>
-
-      {/* Language Toggle */}
-      <div className="absolute top-8 right-8 z-20">
-        <LanguageToggle />
       </div>
 
       {/* Content */}

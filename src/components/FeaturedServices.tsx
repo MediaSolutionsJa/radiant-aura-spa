@@ -35,7 +35,7 @@ const FeaturedServices = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="heading-spa text-foreground mb-4">
+          <h2 className="font-lavish text-4xl md:text-5xl text-foreground mb-4">
             Signature <span className="text-primary">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
