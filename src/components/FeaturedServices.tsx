@@ -3,32 +3,19 @@ import { Link } from 'react-router-dom';
 import signatureFacial from '@/assets/signature-facial.jpg';
 import bodyTreatment from '@/assets/body-treatment.jpg';
 import lashExtensions from '@/assets/lash-extensions.jpg';
+import { useTranslation } from 'react-i18next';
 const faceTreatmentImage = '/lovable-uploads/6240f13e-63be-4d28-ab8d-087c1f0a391c.png';
 
 const FeaturedServices = () => {
-  const services = [
-    {
-      title: 'AE Signature Facial',
-      description: 'Our signature facial uses high-frequency technology, exfoliation, and serums to restore your skin\'s natural balance.',
-      price: '$75',
-      duration: '60 mins',
-      image: faceTreatmentImage,
-    },
-    {
-      title: 'Full Body Treatment',
-      description: 'A complete skincare and relaxation session that includes cleansing, exfoliation, and nourishing treatments.',
-      price: '$130',
-      duration: '1h 30m',
-      image: bodyTreatment,
-    },
-    {
-      title: 'Lash Extensions',
-      description: 'Enhance your natural beauty with our professional lash extension services for a glamorous look.',
-      price: 'From $100',
-      duration: '3 hours',
-      image: lashExtensions,
-    },
-  ];
+  const { t } = useTranslation();
+  const services = t('featuredServices.items', {
+    returnObjects: true,
+  }) as Array<{ title: string; description: string; price: string; duration: string } & { image?: string }>;
+  // Attach images after translation
+  const servicesWithImages = services.map((service, index) => ({
+    ...service,
+    image: [faceTreatmentImage, bodyTreatment, lashExtensions][index],
+  }));
 
   return (
     <section className="section-light py-16 md:py-24">
@@ -36,20 +23,20 @@ const FeaturedServices = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-lavish text-4xl md:text-5xl text-foreground mb-4">
-            Signature <span className="text-primary">Services</span>
+            {t('featuredServices.title')} <span className="text-primary">{t('featuredServices.highlight')}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience our most popular treatments designed to rejuvenate your skin and restore your inner glow.
+            {t('featuredServices.subtitle')}
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {servicesWithImages.map((service, index) => (
             <div key={index} className="service-card">
               <div className="relative overflow-hidden">
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   alt={service.title}
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -69,7 +56,7 @@ const FeaturedServices = () => {
                 </p>
                 
                 <Button asChild className="btn-spa w-full">
-                  <Link to="/contact">Book Treatment</Link>
+                  <Link to="/contact">{t('featuredServices.book')}</Link>
                 </Button>
               </div>
             </div>
@@ -79,7 +66,7 @@ const FeaturedServices = () => {
         {/* View All Services CTA */}
         <div className="text-center mt-12">
           <Button asChild variant="outline" className="btn-outline-spa">
-            <Link to="/services">View All Services</Link>
+            <Link to="/services">{t('featuredServices.viewAll')}</Link>
           </Button>
         </div>
       </div>

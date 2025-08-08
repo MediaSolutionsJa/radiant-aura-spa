@@ -1,42 +1,15 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      service: "AE Signature Facial",
-      rating: 5,
-      text: "Absolutely amazing experience! My skin has never looked better. The staff is so professional and the atmosphere is so relaxing. I can't wait to come back!",
-    },
-    {
-      name: "Maria Rodriguez",
-      service: "Full Body Treatment",
-      rating: 5,
-      text: "The full body treatment was pure luxury. I felt completely pampered and relaxed. The results were incredible - my skin feels so soft and renewed.",
-    },
-    {
-      name: "Emily Chen",
-      service: "Lash Extensions",
-      rating: 5,
-      text: "My lash extensions look absolutely perfect! The attention to detail is amazing. I receive compliments every day and feel so confident.",
-    },
-    {
-      name: "Jessica Williams",
-      service: "AE Luxe Facial",
-      rating: 5,
-      text: "The event-ready facial was exactly what I needed before my wedding. My skin was glowing and photos turned out amazing. Highly recommend!",
-    },
-    {
-      name: "Ashley Davis",
-      service: "Mommy & Me Package",
-      rating: 5,
-      text: "Such a wonderful bonding experience with my daughter. The staff made us both feel so special and comfortable. We're definitely coming back!",
-    },
-  ];
+  const testimonials = t('testimonials.list', {
+    returnObjects: true,
+  }) as Array<{ name: string; service: string; text: string; rating?: number }>;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -62,10 +35,10 @@ const Testimonials = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="font-lavish text-4xl md:text-5xl text-foreground mb-4">
-            What Our Clients <span className="text-primary">Say</span>
+            {t('testimonials.title')} <span className="text-primary">{t('testimonials.highlight')}</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Read about the transformative experiences of our valued clients
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -74,7 +47,7 @@ const Testimonials = () => {
           <div className="card-spa text-center min-h-[300px] flex flex-col justify-center">
             <div className="mb-6">
               <div className="flex justify-center mb-4">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                {[...Array(testimonials[currentIndex].rating || 5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-luxury-gold fill-current" />
                 ))}
               </div>
