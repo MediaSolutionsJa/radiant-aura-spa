@@ -33,7 +33,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="font-lavish text-6xl md:text-7xl lg:text-8xl text-spa-dark-foreground mb-6">
+        <h1 className="heading-luxury text-spa-dark-foreground mb-6">
           {t('heroTitle')}
           <br />
           <span className="text-luxury-gold">{t('heroSubtitle')}</span>

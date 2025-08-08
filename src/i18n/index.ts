@@ -53,8 +53,25 @@ const resources = {
       aboutUs: "About Us",
       privacyPolicy: "Privacy Policy",
       termsOfService: "Terms of Service",
-      copyright: "© 2024 Aura Essence LLC. All rights reserved."
-    }
+      copyright: "© 2024 Aura Essence LLC. All rights reserved.",
+      footerDescription: "Luxurious sanctuary where beauty, wellness, and inner glow meet. Enhancing your natural radiance through personalized treatments.",
+      
+      // Language toggle
+      changeLanguagePrompt: "Click here to change language",
+
+      // Business Info headings
+      callUs: "Call Us",
+      visitUs: "Visit Us",
+      experienceLabel: "Experience",
+
+      // Values
+      values: {
+        luxury: "Luxury",
+        comfort: "Comfort",
+        confidence: "Confidence",
+        wellness: "Wellness",
+        glow: "Glow"
+      }
   },
   es: {
     translation: {
@@ -107,8 +124,25 @@ const resources = {
       aboutUs: "Acerca de Nosotros",
       privacyPolicy: "Política de Privacidad",
       termsOfService: "Términos de Servicio",
-      copyright: "© 2024 Aura Essence LLC. Todos los derechos reservados."
-    }
+      copyright: "© 2024 Aura Essence LLC. Todos los derechos reservados.",
+      footerDescription: "Un santuario lujoso donde la belleza, el bienestar y el brillo interior se encuentran. Realzamos tu luz natural con tratamientos personalizados.",
+
+      // Language toggle
+      changeLanguagePrompt: "Haz clic aquí para cambiar el idioma",
+
+      // Business Info headings
+      callUs: "Llámanos",
+      visitUs: "Visítanos",
+      experienceLabel: "Experiencia",
+
+      // Values
+      values: {
+        luxury: "Lujo",
+        comfort: "Comodidad",
+        confidence: "Confianza",
+        wellness: "Bienestar",
+        glow: "Brillo"
+      }
   }
 };
 

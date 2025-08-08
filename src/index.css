@@ -139,6 +139,11 @@ All colors MUST be HSL.
   .font-lavish {
     font-family: 'Lavish', serif;
   }
+
+  /* Apply Lavish to all headings for a luxurious aesthetic */
+  h1, h2, h3, h4 {
+    @apply font-lavish;
+  }
 }
 
 @layer components {
@@ -183,11 +188,11 @@ All colors MUST be HSL.
 
   /* Typography */
   .heading-luxury {
-    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply font-lavish text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
   }
   
   .heading-spa {
-    @apply font-serif text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide;
+    @apply font-lavish text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide;
   }
   
   .text-luxury {

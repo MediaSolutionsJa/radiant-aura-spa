@@ -4,7 +4,7 @@ import { Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const LanguageToggle = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [showPrompt, setShowPrompt] = useState(false);
   
   const toggleLanguage = () => {
@@ -25,7 +25,7 @@ const LanguageToggle = () => {
       {showPrompt && (
         <div className="absolute right-0 top-full mt-2 z-20 animate-fade-in">
           <div className="bg-gradient-to-r from-luxury-gold to-secondary text-luxury-gold-foreground text-xs px-4 py-2 rounded-lg shadow-luxury border border-luxury-gold/30 whitespace-nowrap animate-bounce font-medium">
-            Click here to change language
+            {t('changeLanguagePrompt')}
             <div className="absolute -top-1 right-4 w-2 h-2 bg-gradient-to-r from-luxury-gold to-secondary rotate-45"></div>
           </div>
         </div>

@@ -12,7 +12,7 @@ const BusinessInfo = () => {
             <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4">
               <Phone className="w-6 h-6 text-luxury-gold-foreground" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
+            <h3 className="font-semibold text-foreground mb-2">{t('callUs')}</h3>
             <p className="text-muted-foreground">{t('phone')}</p>
           </div>
 
@@ -32,7 +32,7 @@ const BusinessInfo = () => {
             <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4">
               <MapPin className="w-6 h-6 text-luxury-gold-foreground" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">Visit Us</h3>
+            <h3 className="font-semibold text-foreground mb-2">{t('visitUs')}</h3>
             <div className="text-sm text-muted-foreground whitespace-pre-line">
               {t('address')}
             </div>
@@ -42,7 +42,7 @@ const BusinessInfo = () => {
             <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4">
               <Award className="w-6 h-6 text-luxury-gold-foreground" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">Experience</h3>
+            <h3 className="font-semibold text-foreground mb-2">{t('experienceLabel')}</h3>
             <p className="text-muted-foreground">{t('experience')}</p>
           </div>
         </div>
