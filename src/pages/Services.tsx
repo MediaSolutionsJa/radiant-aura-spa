@@ -55,7 +55,17 @@ const Services = () => {
     benefit: string;
   }>;
 
-  const ServiceCard = ({ service, featured = false }: { service: any; featured?: boolean }) => (
+  interface Service {
+    name: string;
+    duration?: string;
+    price: string;
+    description?: string;
+    includes?: string[];
+    benefit?: string;
+    featured?: boolean;
+  }
+
+  const ServiceCard = ({ service, featured = false }: { service: Service; featured?: boolean }) => (
     <div className={`service-card ${featured ? 'ring-2 ring-primary shadow-glow' : ''}`}>
       {featured && (
         <div className="bg-primary text-primary-foreground text-center py-2 font-semibold text-sm">
@@ -118,7 +128,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            ✨ <span className="text-primary">{t('servicesPage.sections.facials')}</span>
+            <span className="text-primary">{t('servicesPage.sections.facials')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {facials.map((service, index) => (
@@ -133,7 +143,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-spa text-foreground mb-4">
-              👩‍👧‍👦 <span className="text-primary">{t('servicesPage.sections.children')}</span>
+              <span className="text-primary">{t('servicesPage.sections.children')}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-4">{t('servicesPage.children.ageRange')}</p>
             <p className="text-sm font-semibold text-primary">{t('servicesPage.children.note')}</p>
@@ -150,7 +160,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            🌿 <span className="text-primary">{t('servicesPage.sections.body')}</span>
+            <span className="text-primary">{t('servicesPage.sections.body')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {bodyTreatments.map((service, index) => (
@@ -164,7 +174,7 @@ const Services = () => {
       <section className="section-dark py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-spa-dark-foreground mb-12 text-center">
-            👁️‍🗨️ <span className="text-luxury-gold">{t('servicesPage.sections.lash')}</span>
+            <span className="text-luxury-gold">{t('servicesPage.sections.lash')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {lashServices.map((service, index) => (
@@ -188,7 +198,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            🌷 <span className="text-primary">{t('servicesPage.sections.waxing')}</span>
+            <span className="text-primary">{t('servicesPage.sections.waxing')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {waxingServices.map((service, index) => (
@@ -213,7 +223,7 @@ const Services = () => {
             {/* Add-ons */}
             <div>
               <h2 className="heading-spa text-foreground mb-8 text-center">
-                💖 <span className="text-primary">{t('servicesPage.sections.addOns')}</span>
+                <span className="text-primary">{t('servicesPage.sections.addOns')}</span>
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {addOns.map((addon, index) => (
@@ -230,7 +240,7 @@ const Services = () => {
             {/* Serum Boosts */}
             <div>
               <h2 className="heading-spa text-foreground mb-8 text-center">
-                🌿 <span className="text-primary">{t('servicesPage.sections.serums')}</span>
+                <span className="text-primary">{t('servicesPage.sections.serums')}</span>
               </h2>
               <div className="space-y-4">
                 {serumBoosts.map((serum, index) => (

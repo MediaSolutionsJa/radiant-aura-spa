@@ -8,7 +8,6 @@ const About = () => {
     returnObjects: true,
   }) as Array<{ title: string; description: string }>;
   const values = t('aboutPage.valuesSection.values', { returnObjects: true }) as string[];
-  const valueIcons = t('aboutPage.valuesSection.icons', { returnObjects: true }) as string[];
 
   return (
     <div className="min-h-screen">
@@ -91,9 +90,6 @@ const About = () => {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {values.map((value, index) => (
               <div key={index} className="text-center hover-scale">
-                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-soft">
-                  {valueIcons[index]}
-                </div>
                 <h3 className="text-lg font-semibold text-foreground">{value}</h3>
               </div>
             ))}
