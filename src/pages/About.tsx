@@ -1,19 +1,27 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+  const differenceItems = t('aboutPage.difference.items', {
+    returnObjects: true,
+  }) as Array<{ title: string; description: string }>;
+  const values = t('aboutPage.valuesSection.values', { returnObjects: true }) as string[];
+  const valueIcons = t('aboutPage.valuesSection.icons', { returnObjects: true }) as string[];
+
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="section-gradient py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-lavish text-5xl md:text-6xl text-foreground mb-6">
-            About <span className="text-primary">Aura Essence</span>
+            {t('aboutPage.heroTitle')} <span className="text-primary">{t('aboutPage.heroHighlight')}</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Where luxury meets wellness, and every treatment is designed to help you glow from within.
+            {t('aboutPage.heroSubtitle')}
           </p>
         </div>
       </section>
@@ -23,40 +31,23 @@ const About = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="heading-spa text-foreground mb-6">Our Story</h2>
+              <h2 className="heading-spa text-foreground mb-6">{t('aboutPage.ourStory.title')}</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Founded with a passion for luxury wellness and skincare, Aura Essence LLC was born from 
-                  the belief that everyone deserves to feel radiant, confident, and pampered. Our journey 
-                  began with a simple vision: to create a sanctuary where advanced skincare meets 
-                  personalized care.
-                </p>
-                <p>
-                  Every treatment at Aura Essence is carefully curated to not just enhance your natural beauty, 
-                  but to provide a transformative experience that rejuvenates both body and spirit. From our 
-                  signature facials to our specialized body treatments, we combine cutting-edge techniques 
-                  with premium products to deliver exceptional results.
-                </p>
-                <p>
-                  Our commitment extends beyond skincare – we believe in empowering every client to embrace 
-                  their unique beauty and feel confident in their own skin. This philosophy guides everything 
-                  we do, from our personalized consultation process to our ongoing client relationships.
-                </p>
+                {t('aboutPage.ourStory.paragraphs', { returnObjects: true })
+                  .map((p: string, idx: number) => (
+                    <p key={idx}>{p}</p>
+                  ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-gradient-luxury rounded-2xl p-8 shadow-luxury">
-                <h3 className="text-2xl font-semibold text-luxury-gold-foreground mb-4">Our Founder</h3>
+                <h3 className="text-2xl font-semibold text-luxury-gold-foreground mb-4">{t('aboutPage.founder.title')}</h3>
                 <p className="text-luxury-gold-foreground/80 mb-4">
-                  With over a decade of experience in luxury skincare and wellness, our founder brings 
-                  expertise, passion, and an unwavering commitment to excellence to every aspect of 
-                  Aura Essence.
+                  {t('aboutPage.founder.paragraphs.0')}
                 </p>
                 <p className="text-luxury-gold-foreground/80">
-                  Certified in advanced skincare techniques and dedicated to continuing education, 
-                  our team ensures that every client receives the highest quality care and the most 
-                  innovative treatments available.
+                  {t('aboutPage.founder.paragraphs.1')}
                 </p>
               </div>
             </div>
@@ -69,40 +60,15 @@ const About = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-spa text-spa-dark-foreground mb-4">
-              What Makes Us <span className="text-luxury-gold">Different</span>
+              {t('aboutPage.difference.title')} <span className="text-luxury-gold">{t('aboutPage.difference.highlight')}</span>
             </h2>
             <p className="text-lg text-spa-dark-foreground/80">
-              Experience the Aura Essence difference through our unique approach to luxury wellness
+              {t('aboutPage.difference.subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Personalized Care",
-                description: "Every treatment is customized to your unique skin type, concerns, and goals. We believe in individual attention and tailored experiences."
-              },
-              {
-                title: "Premium Ingredients",
-                description: "We use only the finest, clinically-proven ingredients and products from leading luxury skincare brands to ensure optimal results."
-              },
-              {
-                title: "Relaxing Environment",
-                description: "Our serene, luxurious space is designed to transport you from everyday stress to a peaceful sanctuary of wellness."
-              },
-              {
-                title: "Advanced Techniques",
-                description: "Our team stays current with the latest innovations in skincare technology and advanced treatment methodologies."
-              },
-              {
-                title: "Holistic Approach",
-                description: "We consider your overall wellness, combining skincare with relaxation techniques for comprehensive rejuvenation."
-              },
-              {
-                title: "Ongoing Support",
-                description: "Your skin journey doesn't end with your treatment. We provide guidance and support for your at-home skincare routine."
-              }
-            ].map((item, index) => (
+            {differenceItems.map((item, index) => (
               <div key={index} className="card-dark hover-scale">
                 <div className="w-12 h-12 bg-gradient-luxury rounded-full flex items-center justify-center mb-4 shadow-luxury">
                   <span className="text-luxury-gold-foreground font-bold text-lg">{index + 1}</span>
@@ -119,22 +85,16 @@ const About = () => {
       <section className="section-light py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="heading-spa text-foreground mb-12">
-            Our <span className="text-primary">Values</span>
+            {t('aboutPage.valuesSection.title')} <span className="text-primary">{t('aboutPage.valuesSection.highlight')}</span>
           </h2>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {[
-              { value: 'Luxury', icon: '✨' },
-              { value: 'Comfort', icon: '🌿' },
-              { value: 'Confidence', icon: '💫' },
-              { value: 'Wellness', icon: '🧘‍♀️' },
-              { value: 'Glow', icon: '✨' }
-            ].map((item, index) => (
+            {values.map((value, index) => (
               <div key={index} className="text-center hover-scale">
                 <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-soft">
-                  {item.icon}
+                  {valueIcons[index]}
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">{item.value}</h3>
+                <h3 className="text-lg font-semibold text-foreground">{value}</h3>
               </div>
             ))}
           </div>
