@@ -209,7 +209,6 @@ const resources = {
           title: "Our",
           highlight: "Values",
           values: ["Luxury", "Comfort", "Confidence", "Wellness", "Glow"],
-          icons: ["✨", "🌿", "💫", "🧘‍♀️", "✨"],
         },
       },
 
@@ -874,7 +873,6 @@ const resources = {
           title: "Nuestros",
           highlight: "Valores",
           values: ["Lujo", "Comodidad", "Confianza", "Bienestar", "Brillo"],
-          icons: ["✨", "🌿", "💫", "🧘‍♀️", "✨"],
         },
       },
 
