@@ -11,58 +11,34 @@ import gallery1 from '@/assets/gallery-1.jpg';
 import gallery2 from '@/assets/gallery-2.jpg';
 import gallery3 from '@/assets/gallery-3.jpg';
 import gallery4 from '@/assets/gallery-4.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Gallery = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const galleryItems = [
-    {
-      src: heroImage,
-      alt: "Luxury spa treatment room",
-      category: "Treatment Rooms"
-    },
-    {
-      src: signatureFacial,
-      alt: "Signature facial treatment",
-      category: "Facial Treatments"
-    },
-    {
-      src: bodyTreatment,
-      alt: "Relaxing body treatment",
-      category: "Body Treatments"
-    },
-    {
-      src: lashExtensions,
-      alt: "Professional lash extensions",
-      category: "Lash Services"
-    },
-    {
-      src: gallery1,
-      alt: "Elegant treatment room setup",
-      category: "Treatment Rooms"
-    },
-    {
-      src: gallery2,
-      alt: "Glowing skin results",
-      category: "Results"
-    },
-    {
-      src: gallery3,
-      alt: "Beautiful lash extension results",
-      category: "Lash Services"
-    },
-    {
-      src: gallery4,
-      alt: "Mother and daughter spa experience",
-      category: "Family Packages"
-    }
+  const srcs = [
+    heroImage,
+    signatureFacial,
+    bodyTreatment,
+    lashExtensions,
+    gallery1,
+    gallery2,
+    gallery3,
+    gallery4,
   ];
 
-  const categories = ["All", "Treatment Rooms", "Facial Treatments", "Body Treatments", "Lash Services", "Results", "Family Packages"];
-  const [activeCategory, setActiveCategory] = useState("All");
+  const itemsData = t('galleryPage.items', { returnObjects: true }) as Array<{
+    alt: string;
+    category: string;
+  }>;
+  const galleryItems = itemsData.map((d, i) => ({ src: srcs[i], alt: d.alt, category: d.category }));
 
-  const filteredItems = activeCategory === "All" 
-    ? galleryItems 
+  const categories = t('galleryPage.categories', { returnObjects: true }) as string[];
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const filteredItems = activeCategory === categories[0]
+    ? galleryItems
     : galleryItems.filter(item => item.category === activeCategory);
 
   const openLightbox = (src: string) => {
@@ -83,10 +59,10 @@ const Gallery = () => {
       <section className="section-gradient py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-lavish text-5xl md:text-6xl text-foreground mb-6">
-            Our <span className="text-primary">Gallery</span>
+            {t('galleryPage.heroTitle')} <span className="text-primary">{t('galleryPage.heroHighlight')}</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover the beauty of our treatments, results, and serene spa environment through our gallery of transformations.
+            {t('galleryPage.heroSubtitle')}
           </p>
         </div>
       </section>
@@ -98,9 +74,9 @@ const Gallery = () => {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={activeCategory === category ? "default" : "outline"}
+                variant={activeCategory === category ? 'default' : 'outline'}
                 onClick={() => setActiveCategory(category)}
-                className={activeCategory === category ? "btn-spa" : "btn-outline-spa"}
+                className={activeCategory === category ? 'btn-spa' : 'btn-outline-spa'}
               >
                 {category}
               </Button>
@@ -138,7 +114,7 @@ const Gallery = () => {
 
           {filteredItems.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No images found for this category.</p>
+              <p className="text-muted-foreground">{t('galleryPage.noImages')}</p>
             </div>
           )}
         </div>
@@ -153,7 +129,7 @@ const Gallery = () => {
           <div className="relative max-w-4xl max-h-full">
             <img 
               src={selectedImage} 
-              alt="Gallery image" 
+              alt={t('galleryPage.lightboxAlt')}
               className="max-w-full max-h-full object-contain"
               onClick={(e) => e.stopPropagation()}
             />
@@ -173,16 +149,15 @@ const Gallery = () => {
       <section className="section-dark py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="heading-spa text-spa-dark-foreground mb-8">
-            See the <span className="text-luxury-gold">Difference</span>
+            {t('galleryPage.testimonial.title')} <span className="text-luxury-gold">{t('galleryPage.testimonial.highlight')}</span>
           </h2>
           
           <div className="card-dark max-w-2xl mx-auto">
             <blockquote className="text-lg text-spa-dark-foreground/90 italic mb-6">
-              "The results speak for themselves. My skin has never looked better, and the photos don't even 
-              capture how amazing I feel. The whole experience was transformative."
+              “{t('galleryPage.testimonial.quote')}”
             </blockquote>
-            <p className="font-semibold text-spa-dark-foreground">Sarah M.</p>
-            <p className="text-luxury-gold text-sm">AE Signature Facial Client</p>
+            <p className="font-semibold text-spa-dark-foreground">{t('galleryPage.testimonial.name')}</p>
+            <p className="text-luxury-gold text-sm">{t('galleryPage.testimonial.service')}</p>
           </div>
         </div>
       </section>
@@ -192,18 +167,17 @@ const Gallery = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="card-spa text-center">
             <h3 className="text-xl font-semibold text-foreground mb-4">
-              Want to See Your Results?
+              {t('galleryPage.cta.title')}
             </h3>
             <p className="text-muted-foreground mb-6">
-              We love celebrating our clients' transformations! With your permission, 
-              we may feature before and after photos to inspire others on their glow journey.
+              {t('galleryPage.cta.text')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="btn-spa">
-                <a href="/contact">Book Your Transformation</a>
+                <a href="/contact">{t('galleryPage.cta.primary')}</a>
               </Button>
               <Button asChild variant="outline" className="btn-outline-spa">
-                <a href="/services">View Our Services</a>
+                <a href="/services">{t('galleryPage.cta.secondary')}</a>
               </Button>
             </div>
           </div>

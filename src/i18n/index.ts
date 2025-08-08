@@ -310,6 +310,361 @@ const resources = {
           ],
         },
       },
+
+      // Services Page
+      servicesPage: {
+        heroTitle: "Our",
+        heroHighlight: "Services",
+        heroSubtitle:
+          "Discover our comprehensive range of luxury treatments designed to enhance your natural beauty and wellness.",
+        sections: {
+          facials: "Facials",
+          children: "Children's Facials",
+          body: "Body Treatments",
+          lash: "Lash Extensions",
+          waxing: "Waxing Services",
+          addOns: "Add-Ons",
+          serums: "Serum Boosts",
+        },
+        includesLabel: "Includes:",
+        mostPopular: "Most Popular",
+        children: {
+          ageRange: "Ages 10–14 | 45–60 mins",
+          note: "Note: Minimum of 2 services required per session",
+        },
+        bookAppointment: "Book Appointment",
+        ctaTitle: "Ready to",
+        ctaHighlight: "Glow?",
+        ctaSubtitle: "Let your glow journey begin. Book your personalized treatment today.",
+        ctaButton: "Book Your Treatment",
+        facials: [
+          {
+            name: "Mini Facial",
+            duration: "45 mins",
+            price: "$45",
+            description:
+              "This express facial includes cleansing, exfoliation, a hydrating mask, and SPF protection. Perfect for regular upkeep.",
+            includes: ["Cleanse", "Exfoliation", "Masque", "Tone", "Moisturizer | SPF"],
+          },
+          {
+            name: "AE Signature Facial",
+            duration: "60 mins",
+            price: "$75",
+            description:
+              "Our signature facial uses high-frequency technology, exfoliation, and serums to restore your skin's natural balance.",
+            includes: [
+              "Double Cleanse",
+              "Exfoliation",
+              "Masque",
+              "Tone",
+              "High Frequency",
+              "Serum",
+              "Moisturizer | SPF",
+            ],
+            featured: true,
+          },
+          {
+            name: "Lymphatic Drainage Facial",
+            duration: "1h 10m",
+            price: "$90",
+            description:
+              "This treatment stimulates lymph flow to reduce puffiness and detoxify the skin. Perfect for improving circulation.",
+            includes: [
+              "Double Cleanse",
+              "Exfoliation",
+              "Tone",
+              "Lymphatic Massage",
+              "High Frequency",
+              "Moisturizer | SPF",
+            ],
+          },
+          {
+            name: "AE Luxe | Event Ready",
+            duration: "1h 20m",
+            price: "$120",
+            description:
+              "Designed for glowing skin before a big event. Includes massage, Gua Sha, LED therapy and more.",
+            includes: [
+              "Double Cleanse",
+              "Exfoliation",
+              "Tone",
+              "Massage | Gua Sha | LED & High Frequency",
+              "Serum",
+              "Moisturizer | SPF",
+            ],
+          },
+        ],
+        childrenServices: [
+          {
+            name: "Mini Facial + High Frequency",
+            price: "$35",
+            description: "Cleanses and treats mild breakouts, promoting clear and healthy skin.",
+          },
+          {
+            name: "Mini Back Facial with Gua Sha or Hot Stones",
+            price: "$50",
+            description: "Soothes tension and deeply cleanses the back with relaxing techniques.",
+          },
+          {
+            name: "Eye & Lip Treatment",
+            price: "$40",
+            description: "Hydrates and brightens delicate areas with kid-friendly products.",
+          },
+          {
+            name: "LED Light Therapy + Massage + Exfoliation with Paraffin",
+            price: "$55",
+            description: "Promotes relaxation while boosting skin renewal and hydration.",
+          },
+        ],
+        bodyTreatments: [
+          {
+            name: "Back Facial",
+            duration: "60 mins",
+            price: "$65",
+            description:
+              "Targets back acne, texture, and dryness with deep cleansing, exfoliation, and hydrating mask.",
+            includes: [
+              "Cleanse",
+              "Exfoliation",
+              "Tone",
+              "Masque",
+              "High Frequency",
+              "Massage",
+              "Serum | Moisturizer",
+            ],
+          },
+          {
+            name: "Full Body Treatment",
+            duration: "1h 30m",
+            price: "$130",
+            description:
+              "A full-body skincare and relaxation session that improves circulation and smooths skin.",
+            includes: [
+              "Cleanse",
+              "Exfoliation",
+              "Tone",
+              "Masque",
+              "High Frequency",
+              "Massage",
+              "Moisturizer",
+            ],
+          },
+          {
+            name: "Custom Back Facial",
+            duration: "1h 15m",
+            price: "Price Varies",
+            description:
+              "Tailored to your skin's needs. Perfect for personalizing your glow and targeting specific concerns.",
+            includes: [
+              "Service Designed By You",
+              "Cleanse",
+              "Exfoliation",
+              "Tone",
+              "Masque",
+              "High Frequency",
+              "Massage",
+              "Moisturizer",
+            ],
+          },
+        ],
+        lashServices: [
+          {
+            name: "Classic Set",
+            duration: "Approx. 3 hours",
+            price: "$100",
+            description:
+              "Enhances natural lashes with a clean, elegant look. One extension per lash for length and definition.",
+          },
+          {
+            name: "Hybrid Set",
+            duration: "Approx. 3 hours",
+            price: "$120",
+            description:
+              "Perfect mix of classic and volume lashes providing both texture and fullness.",
+          },
+          {
+            name: "Volume Set",
+            duration: "Approx. 3 hours",
+            price: "$130",
+            description:
+              "Fuller, fluffier appearance using handmade fans. Perfect for bold, glamorous lashes.",
+          },
+        ],
+        waxingServices: [
+          { name: "Brows", duration: "15 mins", price: "$12" },
+          { name: "Brows + Mapping", duration: "20 mins", price: "$20" },
+          { name: "Top Lip", duration: "10 mins", price: "$5" },
+          { name: "Chin", duration: "10 mins", price: "$5" },
+          { name: "Sideburns", duration: "15 mins", price: "$10" },
+          { name: "Full Face", duration: "30 mins", price: "$20" },
+          { name: "Underarm", duration: "15 mins", price: "$20" },
+          { name: "Full Arm", duration: "30 mins", price: "$30" },
+          { name: "Bikini", duration: "30 mins", price: "$40" },
+        ],
+        addOns: [
+          { name: "Eye Treatment", price: "$35" },
+          { name: "Lip Treatment", price: "$20" },
+          { name: "LED Light Therapy + Massage + Exfoliation with Paraffin + Wax Service", price: "$15" },
+          { name: "BT Micro", price: "$15" },
+          { name: "Galvanic/Radio Therapy", price: "$20" },
+          { name: "Gua Sha", price: "$15" },
+          { name: "Lymphatic Drainage", price: "$45" },
+          { name: "Pressure Points", price: "$15" },
+          { name: "Extraction", price: "$15" },
+          { name: "Aromatherapy", price: "$10" },
+          { name: "Cooling Globes", price: "$5" },
+          { name: "Paraffin Wax Service", price: "$30" },
+          { name: "Hot Stones", price: "$10" },
+          { name: "Rubber Masque", price: "$25" },
+          { name: "Jelly Masque", price: "$15" },
+          { name: "Sheet Mask", price: "$10" },
+          { name: "Salt/Sugar Crystal Scrub", price: "$5" },
+        ],
+        serumBoosts: [
+          { name: "Vitamin C", price: "$5", benefit: "Brightens & targets hyperpigmentation" },
+          { name: "Retinol", price: "$5", benefit: "Improves texture & cell turnover" },
+          { name: "Niacinamide", price: "$5", benefit: "Anti-inflammatory & soothes" },
+          { name: "Hyaluronic Acid", price: "$5", benefit: "Deep hydration" },
+        ],
+      },
+
+      // Packages Page
+      packagesPage: {
+        heroTitle: "Custom",
+        heroHighlight: "Packages",
+        heroSubtitle:
+          "Create lasting memories with our specially curated group experiences designed for bonding, celebration, and relaxation.",
+        includesLabel: "Package Includes:",
+        customizeButton: "Customize Package",
+        customizeTitle: "Customize Your",
+        customizeHighlight: "Experience",
+        customizeSubtitle: "Make your package even more special with these additional options",
+        howItWorks: {
+          title: "How It",
+          highlight: "Works",
+          steps: [
+            { title: "Choose Your Package", description: "Select the package that best fits your group and occasion." },
+            { title: "Customize Your Experience", description: "Work with us to tailor services, add-ons, and special touches." },
+            { title: "Enjoy & Relax", description: "Arrive and let us take care of everything while you create memories." },
+          ],
+        },
+        packageInfoTitle: "Package Information",
+        packageInfoBullets: [
+          "All packages require advance booking and consultation to customize your experience",
+          "Group sizes can be accommodated from 2-8 people depending on the package",
+          "48-hour cancellation policy applies to all packages",
+          "Gratuity is not included in package pricing",
+          "Special dietary restrictions can be accommodated with advance notice",
+          "Children's packages available for ages 10-14 with adult supervision",
+        ],
+        ctaTitle: "Ready to Create",
+        ctaHighlight: "Memories?",
+        ctaSubtitle: "Contact us to discuss your custom package and make your special occasion unforgettable.",
+        ctaPrimary: "Plan Your Package",
+        ctaSecondary: "View All Services",
+        packages: [
+          {
+            name: "Mommy & Me",
+            description:
+              "A special bonding experience for mothers and daughters. Enjoy relaxing treatments together in our peaceful environment.",
+            includes: [
+              "Choice of any facial service for both",
+              "Complimentary herbal tea",
+              "Relaxing aromatherapy",
+              "Special photo session",
+              "Take-home skincare samples",
+            ],
+            price: "Custom Pricing",
+            duration: "2-3 hours",
+            highlight: "Perfect for ages 10-14 with mom",
+          },
+          {
+            name: "Couples Package",
+            description:
+              "Reconnect and unwind together with side-by-side treatments in our couples suite.",
+            includes: [
+              "Side-by-side treatment rooms",
+              "Choice of signature facials or body treatments",
+              "Champagne or sparkling cider",
+              "Chocolate-covered strawberries",
+              "Extended relaxation time",
+            ],
+            price: "Custom Pricing",
+            duration: "2.5-3 hours",
+            highlight: "Romantic and rejuvenating",
+          },
+          {
+            name: "Bestie's Spa Day",
+            description:
+              "Celebrate friendship with your closest friends. Perfect for birthdays, bachelorettes, or just because!",
+            includes: [
+              "Group treatment sessions",
+              "Mini facial or body treatment for each guest",
+              "Light refreshments and beverages",
+              "Group photos and memories",
+              "Special group discount",
+              "Custom playlist of your choice",
+            ],
+            price: "Custom Pricing",
+            duration: "3-4 hours",
+            highlight: "Groups of 3-6 people",
+          },
+        ],
+        addOnOptions: [
+          "Lash extensions for the group",
+          "Professional makeup application",
+          "Nail services",
+          "Extended aromatherapy session",
+          "Healthy spa lunch",
+          "Customized gift bags",
+          "Professional photography",
+          "Meditation and wellness coaching",
+        ],
+      },
+
+      // Gallery Page
+      galleryPage: {
+        heroTitle: "Our",
+        heroHighlight: "Gallery",
+        heroSubtitle:
+          "Discover the beauty of our treatments, results, and serene spa environment through our gallery of transformations.",
+        categories: [
+          "All",
+          "Treatment Rooms",
+          "Facial Treatments",
+          "Body Treatments",
+          "Lash Services",
+          "Results",
+          "Family Packages",
+        ],
+        items: [
+          { alt: "Luxury spa treatment room", category: "Treatment Rooms" },
+          { alt: "Signature facial treatment", category: "Facial Treatments" },
+          { alt: "Relaxing body treatment", category: "Body Treatments" },
+          { alt: "Professional lash extensions", category: "Lash Services" },
+          { alt: "Elegant treatment room setup", category: "Treatment Rooms" },
+          { alt: "Glowing skin results", category: "Results" },
+          { alt: "Beautiful lash extension results", category: "Lash Services" },
+          { alt: "Mother and daughter spa experience", category: "Family Packages" },
+        ],
+        noImages: "No images found for this category.",
+        lightboxAlt: "Gallery image",
+        testimonial: {
+          title: "See the",
+          highlight: "Difference",
+          quote:
+            "The results speak for themselves. My skin has never looked better, and the photos don't even capture how amazing I feel. The whole experience was transformative.",
+          name: "Sarah M.",
+          service: "AE Signature Facial Client",
+        },
+        cta: {
+          title: "Want to See Your Results?",
+          text:
+            "We love celebrating our clients' transformations! With your permission, we may feature before and after photos to inspire others on their glow journey.",
+          primary: "Book Your Transformation",
+          secondary: "View Our Services",
+        },
+      },
     },
   },
   es: {
@@ -619,6 +974,361 @@ const resources = {
                 "Servicios para niños disponibles para edades de 10-14 con supervisión adulta.",
             },
           ],
+        },
+      },
+
+      // Página de Servicios
+      servicesPage: {
+        heroTitle: "Nuestros",
+        heroHighlight: "Servicios",
+        heroSubtitle:
+          "Descubre nuestra amplia gama de tratamientos de lujo diseñados para realzar tu belleza natural y bienestar.",
+        sections: {
+          facials: "Faciales",
+          children: "Faciales para Niños",
+          body: "Tratamientos Corporales",
+          lash: "Extensiones de Pestañas",
+          waxing: "Servicios de Depilación",
+          addOns: "Complementos",
+          serums: "Refuerzos de Sueros",
+        },
+        includesLabel: "Incluye:",
+        mostPopular: "Más Popular",
+        children: {
+          ageRange: "Edades 10–14 | 45–60 mins",
+          note: "Nota: Se requieren mínimo 2 servicios por sesión",
+        },
+        bookAppointment: "Reservar Cita",
+        ctaTitle: "¿Lista para",
+        ctaHighlight: "Brillar?",
+        ctaSubtitle: "Que comience tu viaje de brillo. Reserva tu tratamiento personalizado hoy.",
+        ctaButton: "Reserva tu Tratamiento",
+        facials: [
+          {
+            name: "Facial Mini",
+            duration: "45 mins",
+            price: "$45",
+            description:
+              "Este facial exprés incluye limpieza, exfoliación, una mascarilla hidratante y protección SPF. Perfecto para mantenimiento regular.",
+            includes: ["Limpieza", "Exfoliación", "Mascarilla", "Tónico", "Hidratante | SPF"],
+          },
+          {
+            name: "Facial Característico AE",
+            duration: "60 mins",
+            price: "$75",
+            description:
+              "Nuestro facial característico utiliza tecnología de alta frecuencia, exfoliación y sueros para restaurar el equilibrio natural de tu piel.",
+            includes: [
+              "Doble Limpieza",
+              "Exfoliación",
+              "Mascarilla",
+              "Tónico",
+              "Alta Frecuencia",
+              "Suero",
+              "Hidratante | SPF",
+            ],
+            featured: true,
+          },
+          {
+            name: "Facial de Drenaje Linfático",
+            duration: "1h 10m",
+            price: "$90",
+            description:
+              "Este tratamiento estimula el flujo linfático para reducir la hinchazón y desintoxicar la piel. Perfecto para mejorar la circulación.",
+            includes: [
+              "Doble Limpieza",
+              "Exfoliación",
+              "Tónico",
+              "Masaje Linfático",
+              "Alta Frecuencia",
+              "Hidratante | SPF",
+            ],
+          },
+          {
+            name: "AE Luxe | Listo para Evento",
+            duration: "1h 20m",
+            price: "$120",
+            description:
+              "Diseñado para una piel radiante antes de un gran evento. Incluye masaje, Gua Sha, terapia LED y más.",
+            includes: [
+              "Doble Limpieza",
+              "Exfoliación",
+              "Tónico",
+              "Masaje | Gua Sha | LED y Alta Frecuencia",
+              "Suero",
+              "Hidratante | SPF",
+            ],
+          },
+        ],
+        childrenServices: [
+          {
+            name: "Facial Mini + Alta Frecuencia",
+            price: "$35",
+            description: "Limpia y trata brotes leves, promoviendo una piel clara y saludable.",
+          },
+          {
+            name: "Mini Facial de Espalda con Gua Sha o Piedras Calientes",
+            price: "$50",
+            description: "Alivia la tensión y limpia profundamente la espalda con técnicas relajantes.",
+          },
+          {
+            name: "Tratamiento de Ojos y Labios",
+            price: "$40",
+            description: "Hidrata e ilumina áreas delicadas con productos aptos para niños.",
+          },
+          {
+            name: "Terapia LED + Masaje + Exfoliación con Parafina",
+            price: "$55",
+            description: "Promueve la relajación mientras estimula la renovación e hidratación de la piel.",
+          },
+        ],
+        bodyTreatments: [
+          {
+            name: "Facial de Espalda",
+            duration: "60 mins",
+            price: "$65",
+            description:
+              "Trata el acné, la textura y la resequedad de la espalda con limpieza profunda, exfoliación y mascarilla hidratante.",
+            includes: [
+              "Limpieza",
+              "Exfoliación",
+              "Tónico",
+              "Mascarilla",
+              "Alta Frecuencia",
+              "Masaje",
+              "Suero | Hidratante",
+            ],
+          },
+          {
+            name: "Tratamiento Corporal Completo",
+            duration: "1h 30m",
+            price: "$130",
+            description:
+              "Sesión integral de cuidado corporal y relajación que mejora la circulación y suaviza la piel.",
+            includes: [
+              "Limpieza",
+              "Exfoliación",
+              "Tónico",
+              "Mascarilla",
+              "Alta Frecuencia",
+              "Masaje",
+              "Hidratante",
+            ],
+          },
+          {
+            name: "Facial de Espalda Personalizado",
+            duration: "1h 15m",
+            price: "Precio Variable",
+            description:
+              "Adaptado a las necesidades de tu piel. Perfecto para personalizar tu brillo y tratar preocupaciones específicas.",
+            includes: [
+              "Servicio Diseñado por Ti",
+              "Limpieza",
+              "Exfoliación",
+              "Tónico",
+              "Mascarilla",
+              "Alta Frecuencia",
+              "Masaje",
+              "Hidratante",
+            ],
+          },
+        ],
+        lashServices: [
+          {
+            name: "Juego Clásico",
+            duration: "Aprox. 3 horas",
+            price: "$100",
+            description:
+              "Realza las pestañas naturales con un look limpio y elegante. Una extensión por pestaña para longitud y definición.",
+          },
+          {
+            name: "Juego Híbrido",
+            duration: "Aprox. 3 horas",
+            price: "$120",
+            description:
+              "Mezcla perfecta de clásicas y volumen que brinda textura y plenitud.",
+          },
+          {
+            name: "Juego de Volumen",
+            duration: "Aprox. 3 horas",
+            price: "$130",
+            description:
+              "Apariencia más llena y esponjosa usando abanicos hechos a mano. Ideal para un look glamoroso.",
+          },
+        ],
+        waxingServices: [
+          { name: "Cejas", duration: "15 mins", price: "$12" },
+          { name: "Cejas + Mapeo", duration: "20 mins", price: "$20" },
+          { name: "Labio Superior", duration: "10 mins", price: "$5" },
+          { name: "Barbilla", duration: "10 mins", price: "$5" },
+          { name: "Patillas", duration: "15 mins", price: "$10" },
+          { name: "Rostro Completo", duration: "30 mins", price: "$20" },
+          { name: "Axila", duration: "15 mins", price: "$20" },
+          { name: "Brazo Completo", duration: "30 mins", price: "$30" },
+          { name: "Bikini", duration: "30 mins", price: "$40" },
+        ],
+        addOns: [
+          { name: "Tratamiento de Ojos", price: "$35" },
+          { name: "Tratamiento de Labios", price: "$20" },
+          { name: "Terapia LED + Masaje + Exfoliación con Parafina + Servicio de Cera", price: "$15" },
+          { name: "BT Micro", price: "$15" },
+          { name: "Terapia Galvánica/Radio", price: "$20" },
+          { name: "Gua Sha", price: "$15" },
+          { name: "Drenaje Linfático", price: "$45" },
+          { name: "Puntos de Presión", price: "$15" },
+          { name: "Extracción", price: "$15" },
+          { name: "Aromaterapia", price: "$10" },
+          { name: "Globos Fríos", price: "$5" },
+          { name: "Parafina", price: "$30" },
+          { name: "Piedras Calientes", price: "$10" },
+          { name: "Mascarilla de Goma", price: "$25" },
+          { name: "Mascarilla Jelly", price: "$15" },
+          { name: "Mascarilla en Hoja", price: "$10" },
+          { name: "Exfoliante de Sal/Azúcar", price: "$5" },
+        ],
+        serumBoosts: [
+          { name: "Vitamina C", price: "$5", benefit: "Aporta luminosidad y combate hiperpigmentación" },
+          { name: "Retinol", price: "$5", benefit: "Mejora la textura y la renovación celular" },
+          { name: "Niacinamida", price: "$5", benefit: "Antiinflamatoria y calmante" },
+          { name: "Ácido Hialurónico", price: "$5", benefit: "Hidratación profunda" },
+        ],
+      },
+
+      // Página de Paquetes
+      packagesPage: {
+        heroTitle: "Paquetes",
+        heroHighlight: "Personalizados",
+        heroSubtitle:
+          "Crea recuerdos duraderos con nuestras experiencias en grupo especialmente curadas para conexión, celebración y relajación.",
+        includesLabel: "Incluye:",
+        customizeButton: "Personalizar Paquete",
+        customizeTitle: "Personaliza tu",
+        customizeHighlight: "Experiencia",
+        customizeSubtitle: "Haz tu paquete aún más especial con estas opciones adicionales",
+        howItWorks: {
+          title: "Cómo",
+          highlight: "Funciona",
+          steps: [
+            { title: "Elige tu Paquete", description: "Selecciona el paquete que mejor se adapte a tu grupo y ocasión." },
+            { title: "Personaliza tu Experiencia", description: "Trabaja con nosotros para ajustar servicios, complementos y toques especiales." },
+            { title: "Disfruta y Relájate", description: "Llega y deja que nos encarguemos de todo mientras creas recuerdos." },
+          ],
+        },
+        packageInfoTitle: "Información del Paquete",
+        packageInfoBullets: [
+          "Todos los paquetes requieren reserva anticipada y consulta para personalizar tu experiencia",
+          "Se pueden acomodar grupos de 2-8 personas según el paquete",
+          "Se aplica política de cancelación de 48 horas a todos los paquetes",
+          "La propina no está incluida en el precio del paquete",
+          "Se pueden acomodar restricciones dietéticas con aviso previo",
+          "Paquetes para niños disponibles para edades 10-14 con supervisión adulta",
+        ],
+        ctaTitle: "¿Listo para Crear",
+        ctaHighlight: "Recuerdos?",
+        ctaSubtitle: "Contáctanos para hablar de tu paquete personalizado y hacer inolvidable tu ocasión especial.",
+        ctaPrimary: "Planifica tu Paquete",
+        ctaSecondary: "Ver Todos los Servicios",
+        packages: [
+          {
+            name: "Mamá e Hija",
+            description:
+              "Una experiencia especial de unión para madres e hijas. Disfruten juntas de tratamientos relajantes en nuestro ambiente pacífico.",
+            includes: [
+              "Elección de cualquier servicio facial para ambas",
+              "Té de hierbas de cortesía",
+              "Aromaterapia relajante",
+              "Sesión de fotos especial",
+              "Muestras de cuidado de la piel para llevar",
+            ],
+            price: "Precio Personalizado",
+            duration: "2-3 horas",
+            highlight: "Perfecto para edades 10-14 con mamá",
+          },
+          {
+            name: "Paquete para Parejas",
+            description:
+              "Reconecta y relájate con tratamientos lado a lado en nuestra suite para parejas.",
+            includes: [
+              "Salas de tratamiento lado a lado",
+              "Elección de faciales característicos o tratamientos corporales",
+              "Champaña o sidra espumosa",
+              "Fresas cubiertas de chocolate",
+              "Tiempo de relajación extendido",
+            ],
+            price: "Precio Personalizado",
+            duration: "2.5-3 horas",
+            highlight: "Romántico y rejuvenecedor",
+          },
+          {
+            name: "Día de Spa con Amigas",
+            description:
+              "Celebra la amistad con tus mejores amigas. Perfecto para cumpleaños, despedidas o simplemente porque sí!",
+            includes: [
+              "Sesiones de tratamiento en grupo",
+              "Mini facial o tratamiento corporal para cada invitada",
+              "Refrescos y bebidas ligeras",
+              "Fotos y recuerdos en grupo",
+              "Descuento especial para grupos",
+              "Lista de reproducción personalizada",
+            ],
+            price: "Precio Personalizado",
+            duration: "3-4 horas",
+            highlight: "Grupos de 3-6 personas",
+          },
+        ],
+        addOnOptions: [
+          "Extensiones de pestañas para el grupo",
+          "Maquillaje profesional",
+          "Servicios de uñas",
+          "Sesión extendida de aromaterapia",
+          "Almuerzo saludable de spa",
+          "Bolsas de regalo personalizadas",
+          "Fotografía profesional",
+          "Meditación y coaching de bienestar",
+        ],
+      },
+
+      // Página de Galería
+      galleryPage: {
+        heroTitle: "Nuestra",
+        heroHighlight: "Galería",
+        heroSubtitle:
+          "Descubre la belleza de nuestros tratamientos, resultados y ambiente sereno a través de nuestra galería de transformaciones.",
+        categories: [
+          "Todas",
+          "Salas de Tratamiento",
+          "Tratamientos Faciales",
+          "Tratamientos Corporales",
+          "Servicios de Pestañas",
+          "Resultados",
+          "Paquetes Familiares",
+        ],
+        items: [
+          { alt: "Sala de tratamiento de spa de lujo", category: "Salas de Tratamiento" },
+          { alt: "Tratamiento facial característico", category: "Tratamientos Faciales" },
+          { alt: "Relajante tratamiento corporal", category: "Tratamientos Corporales" },
+          { alt: "Extensiones de pestañas profesionales", category: "Servicios de Pestañas" },
+          { alt: "Elegante montaje de sala de tratamiento", category: "Salas de Tratamiento" },
+          { alt: "Resultados de piel radiante", category: "Resultados" },
+          { alt: "Hermosos resultados de extensiones de pestañas", category: "Servicios de Pestañas" },
+          { alt: "Experiencia de spa madre e hija", category: "Paquetes Familiares" },
+        ],
+        noImages: "No se encontraron imágenes para esta categoría.",
+        lightboxAlt: "Imagen de la galería",
+        testimonial: {
+          title: "Mira la",
+          highlight: "Diferencia",
+          quote:
+            "Los resultados hablan por sí solos. Mi piel nunca ha lucido mejor, y las fotos ni siquiera capturan lo increíble que me siento. Toda la experiencia fue transformadora.",
+          name: "Sarah M.",
+          service: "Cliente de Facial Característico AE",
+        },
+        cta: {
+          title: "¿Quieres Ver tus Resultados?",
+          text:
+            "¡Nos encanta celebrar las transformaciones de nuestros clientes! Con tu permiso, podemos mostrar fotos de antes y después para inspirar a otros en su viaje de brillo.",
+          primary: "Reserva tu Transformación",
+          secondary: "Ver Nuestros Servicios",
         },
       },
     },

@@ -2,152 +2,64 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
-  const facials = [
-    {
-      name: "Mini Facial",
-      duration: "45 mins",
-      price: "$45",
-      description: "This express facial includes cleansing, exfoliation, a hydrating mask, and SPF protection. Perfect for regular upkeep.",
-      includes: ["Cleanse", "Exfoliation", "Masque", "Tone", "Moisturizer | SPF"]
-    },
-    {
-      name: "AE Signature Facial",
-      duration: "60 mins",
-      price: "$75",
-      description: "Our signature facial uses high-frequency technology, exfoliation, and serums to restore your skin's natural balance.",
-      includes: ["Double Cleanse", "Exfoliation", "Masque", "Tone", "High Frequency", "Serum", "Moisturizer | SPF"],
-      featured: true
-    },
-    {
-      name: "Lymphatic Drainage Facial",
-      duration: "1h 10m",
-      price: "$90",
-      description: "This treatment stimulates lymph flow to reduce puffiness and detoxify the skin. Perfect for improving circulation.",
-      includes: ["Double Cleanse", "Exfoliation", "Tone", "Lymphatic Massage", "High Frequency", "Moisturizer | SPF"]
-    },
-    {
-      name: "AE Luxe | Event Ready",
-      duration: "1h 20m",
-      price: "$120",
-      description: "Designed for glowing skin before a big event. Includes massage, Gua Sha, LED therapy and more.",
-      includes: ["Double Cleanse", "Exfoliation", "Tone", "Massage | Gua Sha | LED & High Frequency", "Serum", "Moisturizer | SPF"]
-    }
-  ];
+  const { t } = useTranslation();
 
-  const childrenServices = [
-    {
-      name: "Mini Facial + High Frequency",
-      price: "$35",
-      description: "Cleanses and treats mild breakouts, promoting clear and healthy skin."
-    },
-    {
-      name: "Mini Back Facial with Gua Sha or Hot Stones",
-      price: "$50",
-      description: "Soothes tension and deeply cleanses the back with relaxing techniques."
-    },
-    {
-      name: "Eye & Lip Treatment",
-      price: "$40",
-      description: "Hydrates and brightens delicate areas with kid-friendly products."
-    },
-    {
-      name: "LED Light Therapy + Massage + Exfoliation with Paraffin",
-      price: "$55",
-      description: "Promotes relaxation while boosting skin renewal and hydration."
-    }
-  ];
+  // Translated data
+  const facials = t('servicesPage.facials', { returnObjects: true }) as Array<{
+    name: string;
+    duration?: string;
+    price: string;
+    description: string;
+    includes?: string[];
+    featured?: boolean;
+  }>;
 
-  const bodyTreatments = [
-    {
-      name: "Back Facial",
-      duration: "60 mins",
-      price: "$65",
-      description: "Targets back acne, texture, and dryness with deep cleansing, exfoliation, and hydrating mask.",
-      includes: ["Cleanse", "Exfoliation", "Tone", "Masque", "High Frequency", "Massage", "Serum | Moisturizer"]
-    },
-    {
-      name: "Full Body Treatment",
-      duration: "1h 30m",
-      price: "$130",
-      description: "A full-body skincare and relaxation session that improves circulation and smooths skin.",
-      includes: ["Cleanse", "Exfoliation", "Tone", "Masque", "High Frequency", "Massage", "Moisturizer"]
-    },
-    {
-      name: "Custom Back Facial",
-      duration: "1h 15m",
-      price: "Price Varies",
-      description: "Tailored to your skin's needs. Perfect for personalizing your glow and targeting specific concerns.",
-      includes: ["Service Designed By You", "Cleanse", "Exfoliation", "Tone", "Masque", "High Frequency", "Massage", "Moisturizer"]
-    }
-  ];
+  const childrenServices = t('servicesPage.childrenServices', { returnObjects: true }) as Array<{
+    name: string;
+    price: string;
+    description: string;
+  }>;
 
-  const lashServices = [
-    {
-      name: "Classic Set",
-      duration: "Approx. 3 hours",
-      price: "$100",
-      description: "Enhances natural lashes with a clean, elegant look. One extension per lash for length and definition."
-    },
-    {
-      name: "Hybrid Set",
-      duration: "Approx. 3 hours",
-      price: "$120",
-      description: "Perfect mix of classic and volume lashes providing both texture and fullness."
-    },
-    {
-      name: "Volume Set",
-      duration: "Approx. 3 hours",
-      price: "$130",
-      description: "Fuller, fluffier appearance using handmade fans. Perfect for bold, glamorous lashes."
-    }
-  ];
+  const bodyTreatments = t('servicesPage.bodyTreatments', { returnObjects: true }) as Array<{
+    name: string;
+    duration: string;
+    price: string;
+    description: string;
+    includes: string[];
+  }>;
 
-  const waxingServices = [
-    { name: "Brows", duration: "15 mins", price: "$12" },
-    { name: "Brows + Mapping", duration: "20 mins", price: "$20" },
-    { name: "Top Lip", duration: "10 mins", price: "$5" },
-    { name: "Chin", duration: "10 mins", price: "$5" },
-    { name: "Sideburns", duration: "15 mins", price: "$10" },
-    { name: "Full Face", duration: "30 mins", price: "$20" },
-    { name: "Underarm", duration: "15 mins", price: "$20" },
-    { name: "Full Arm", duration: "30 mins", price: "$30" },
-    { name: "Bikini", duration: "30 mins", price: "$40" }
-  ];
+  const lashServices = t('servicesPage.lashServices', { returnObjects: true }) as Array<{
+    name: string;
+    duration: string;
+    price: string;
+    description: string;
+  }>;
 
-  const addOns = [
-    { name: "Eye Treatment", price: "$35" },
-    { name: "Lip Treatment", price: "$20" },
-    { name: "LED Light Therapy + Massage + Exfoliation with Paraffin + Wax Service", price: "$15" },
-    { name: "BT Micro", price: "$15" },
-    { name: "Galvanic/Radio Therapy", price: "$20" },
-    { name: "Gua Sha", price: "$15" },
-    { name: "Lymphatic Drainage", price: "$45" },
-    { name: "Pressure Points", price: "$15" },
-    { name: "Extraction", price: "$15" },
-    { name: "Aromatherapy", price: "$10" },
-    { name: "Cooling Globes", price: "$5" },
-    { name: "Paraffin Wax Service", price: "$30" },
-    { name: "Hot Stones", price: "$10" },
-    { name: "Rubber Masque", price: "$25" },
-    { name: "Jelly Masque", price: "$15" },
-    { name: "Sheet Mask", price: "$10" },
-    { name: "Salt/Sugar Crystal Scrub", price: "$5" }
-  ];
+  const waxingServices = t('servicesPage.waxingServices', { returnObjects: true }) as Array<{
+    name: string;
+    duration: string;
+    price: string;
+  }>;
 
-  const serumBoosts = [
-    { name: "Vitamin C", price: "$5", benefit: "Brightens & targets hyperpigmentation" },
-    { name: "Retinol", price: "$5", benefit: "Improves texture & cell turnover" },
-    { name: "Niacinamide", price: "$5", benefit: "Anti-inflammatory & soothes" },
-    { name: "Hyaluronic Acid", price: "$5", benefit: "Deep hydration" }
-  ];
+  const addOns = t('servicesPage.addOns', { returnObjects: true }) as Array<{
+    name: string;
+    price: string;
+  }>;
+
+  const serumBoosts = t('servicesPage.serumBoosts', { returnObjects: true }) as Array<{
+    name: string;
+    price: string;
+    benefit: string;
+  }>;
 
   const ServiceCard = ({ service, featured = false }: { service: any; featured?: boolean }) => (
     <div className={`service-card ${featured ? 'ring-2 ring-primary shadow-glow' : ''}`}>
       {featured && (
         <div className="bg-primary text-primary-foreground text-center py-2 font-semibold text-sm">
-          Most Popular
+          {t('servicesPage.mostPopular')}
         </div>
       )}
       <div className="p-6">
@@ -159,13 +71,11 @@ const Services = () => {
           </div>
         </div>
         
-        <p className="text-muted-foreground mb-4 leading-relaxed">
-          {service.description}
-        </p>
+        <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
         
         {service.includes && (
           <div className="mb-4">
-            <p className="text-sm font-semibold text-foreground mb-2">Includes:</p>
+            <p className="text-sm font-semibold text-foreground mb-2">{t('servicesPage.includesLabel')}</p>
             <ul className="text-sm text-muted-foreground space-y-1">
               {service.includes.map((item: string, index: number) => (
                 <li key={index} className="flex items-center">
@@ -182,7 +92,7 @@ const Services = () => {
         )}
         
         <Button asChild className="btn-spa w-full">
-          <Link to="/contact">Book Now</Link>
+          <Link to="/contact">{t('bookNow')}</Link>
         </Button>
       </div>
     </div>
@@ -196,10 +106,10 @@ const Services = () => {
       <section className="section-gradient py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-lavish text-5xl md:text-6xl text-foreground mb-6">
-            Our <span className="text-primary">Services</span>
+            {t('servicesPage.heroTitle')} <span className="text-primary">{t('servicesPage.heroHighlight')}</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover our comprehensive range of luxury treatments designed to enhance your natural beauty and wellness.
+            {t('servicesPage.heroSubtitle')}
           </p>
         </div>
       </section>
@@ -208,7 +118,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            ✨ <span className="text-primary">Facials</span>
+            ✨ <span className="text-primary">{t('servicesPage.sections.facials')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {facials.map((service, index) => (
@@ -223,10 +133,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-spa text-foreground mb-4">
-              👩‍👧‍👦 <span className="text-primary">Children's Facials</span>
+              👩‍👧‍👦 <span className="text-primary">{t('servicesPage.sections.children')}</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-4">Ages 10–14 | 45–60 mins</p>
-            <p className="text-sm font-semibold text-primary">Note: Minimum of 2 services required per session</p>
+            <p className="text-lg text-muted-foreground mb-4">{t('servicesPage.children.ageRange')}</p>
+            <p className="text-sm font-semibold text-primary">{t('servicesPage.children.note')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {childrenServices.map((service, index) => (
@@ -240,7 +150,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            🌿 <span className="text-primary">Body Treatments</span>
+            🌿 <span className="text-primary">{t('servicesPage.sections.body')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {bodyTreatments.map((service, index) => (
@@ -254,7 +164,7 @@ const Services = () => {
       <section className="section-dark py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-spa-dark-foreground mb-12 text-center">
-            👁️‍🗨️ <span className="text-luxury-gold">Lash Extensions</span>
+            👁️‍🗨️ <span className="text-luxury-gold">{t('servicesPage.sections.lash')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {lashServices.map((service, index) => (
@@ -264,11 +174,9 @@ const Services = () => {
                   <span className="text-2xl font-bold text-luxury-gold">{service.price}</span>
                 </div>
                 <p className="text-sm text-spa-dark-foreground/70 mb-4">{service.duration}</p>
-                <p className="text-spa-dark-foreground/80 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
+                <p className="text-spa-dark-foreground/80 mb-6 leading-relaxed">{service.description}</p>
                 <Button asChild className="btn-luxury w-full">
-                  <Link to="/contact">Book Appointment</Link>
+                  <Link to="/contact">{t('servicesPage.bookAppointment')}</Link>
                 </Button>
               </div>
             ))}
@@ -280,7 +188,7 @@ const Services = () => {
       <section className="section-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="heading-spa text-foreground mb-12 text-center">
-            🌷 <span className="text-primary">Waxing Services</span>
+            🌷 <span className="text-primary">{t('servicesPage.sections.waxing')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {waxingServices.map((service, index) => (
@@ -305,7 +213,7 @@ const Services = () => {
             {/* Add-ons */}
             <div>
               <h2 className="heading-spa text-foreground mb-8 text-center">
-                💖 <span className="text-primary">Add-Ons</span>
+                💖 <span className="text-primary">{t('servicesPage.sections.addOns')}</span>
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {addOns.map((addon, index) => (
@@ -322,7 +230,7 @@ const Services = () => {
             {/* Serum Boosts */}
             <div>
               <h2 className="heading-spa text-foreground mb-8 text-center">
-                🌿 <span className="text-primary">Serum Boosts</span>
+                🌿 <span className="text-primary">{t('servicesPage.sections.serums')}</span>
               </h2>
               <div className="space-y-4">
                 {serumBoosts.map((serum, index) => (
@@ -346,13 +254,11 @@ const Services = () => {
       <section className="section-dark py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="heading-spa text-spa-dark-foreground mb-4">
-            Ready to <span className="text-luxury-gold">Glow?</span>
+            {t('servicesPage.ctaTitle')} <span className="text-luxury-gold">{t('servicesPage.ctaHighlight')}</span>
           </h2>
-          <p className="text-lg text-spa-dark-foreground/80 mb-8">
-            Let your glow journey begin. Book your personalized treatment today.
-          </p>
+          <p className="text-lg text-spa-dark-foreground/80 mb-8">{t('servicesPage.ctaSubtitle')}</p>
           <Button asChild className="btn-luxury text-lg px-12 py-4">
-            <Link to="/contact">Book Your Treatment</Link>
+            <Link to="/contact">{t('servicesPage.ctaButton')}</Link>
           </Button>
         </div>
       </section>
