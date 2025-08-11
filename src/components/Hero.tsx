@@ -30,7 +30,7 @@ const Hero = () => {
               {t('heroWelcome', { defaultValue: 'WELCOME TO' })}
             </p>
             <h1 className="font-lavish text-5xl md:text-6xl lg:text-7xl leading-tight mb-4">
-              <span className="text-golden-texture font-lavish">
+              <span className="bg-gradient-to-r from-luxury-gold to-foreground bg-clip-text text-transparent">
                 {t('heroTitle')}
               </span>
             </h1>
