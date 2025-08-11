@@ -32,8 +32,8 @@ const About = () => {
             <div>
               <h2 className="heading-spa text-foreground mb-6">{t('aboutPage.ourStory.title')}</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                {(t('aboutPage.ourStory.paragraphs', { returnObjects: true }) as string[])
-                  .map((p, idx) => (
+                {t('aboutPage.ourStory.paragraphs', { returnObjects: true })
+                  .map((p: string, idx: number) => (
                     <p key={idx}>{p}</p>
                   ))}
               </div>
