@@ -71,3 +71,16 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Stripe and Supabase setup
+
+The project includes a seeding script to populate Stripe with products and
+store them in Supabase. Configure the following environment variables (see
+`.env.example`) and run:
+
+```sh
+npm run stripe:seed
+```
+
+This will create Stripe Products and Prices for each catalog item and insert
+them into the `catalog_items` table via the Supabase REST API.
