@@ -54,13 +54,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Business Contact Info */}
-      <div className="absolute bottom-24 left-8 z-10 bg-white/10 backdrop-blur-sm rounded-lg p-4">
-        <div className="text-spa-dark-foreground/90 text-sm">
-          <p className="font-semibold">{t('phone')}</p>
-        </div>
-      </div>
-
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <div className="w-6 h-10 border-2 border-spa-dark-foreground rounded-full flex justify-center">

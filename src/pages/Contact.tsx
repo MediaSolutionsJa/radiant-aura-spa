@@ -184,7 +184,7 @@ const Contact = () => {
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary" />
                     <div>
-                      <p className="font-medium text-foreground">hello@auraessence.com</p>
+                      <p className="font-medium text-foreground">{t('email')}</p>
                       <p className="text-sm text-muted-foreground">{t('contactPage.contactInfo.emailNote')}</p>
                     </div>
                   </div>
