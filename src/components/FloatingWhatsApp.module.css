@@ -1,0 +1,50 @@
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  background: #25D366;
+  color: #fff;
+  cursor: pointer;
+  z-index: 9999;
+  animation: wa-breathe 3.2s ease-in-out infinite, wa-wiggle 12s ease-in-out infinite;
+}
+
+.fab:hover,
+.fab:focus-visible {
+  transform: scale(1.08);
+}
+
+.fab:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.fab svg {
+  width: 28px;
+  height: 28px;
+}
+
+@keyframes wa-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes wa-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(2deg); }
+  20% { transform: rotate(-2deg); }
+  30% { transform: rotate(1deg); }
+  40% { transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab {
+    animation: none;
+  }
+}

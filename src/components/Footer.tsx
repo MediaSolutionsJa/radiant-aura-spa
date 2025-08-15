@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { telLink, mailtoLink, mapsLink } from '@/lib/contactLinks';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -47,15 +48,22 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-2 text-spa-dark-foreground/70">
                 <Phone className="w-4 h-4" />
-                <span>{t('phone')}</span>
+                <a href={telLink(t('phone'))}>{t('phone')}</a>
               </li>
               <li className="flex items-center space-x-2 text-spa-dark-foreground/70">
                 <Mail className="w-4 h-4" />
-                <span>{t('email')}</span>
+                <a href={mailtoLink(undefined, undefined, t('email'))}>{t('email')}</a>
               </li>
               <li className="flex items-start space-x-2 text-spa-dark-foreground/70">
                 <MapPin className="w-4 h-4 mt-1" />
-                <span className="whitespace-pre-line">{t('address')}</span>
+                <a
+                  href={mapsLink(t('address'))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whitespace-pre-line"
+                >
+                  {t('address')}
+                </a>
               </li>
             </ul>
           </div>

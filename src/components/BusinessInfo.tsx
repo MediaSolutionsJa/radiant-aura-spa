@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Phone, Clock, MapPin, Award } from 'lucide-react';
+import { telLink, mapsLink } from '@/lib/contactLinks';
 
 const BusinessInfo = () => {
   const { t } = useTranslation();
@@ -13,7 +14,9 @@ const BusinessInfo = () => {
               <Phone className="w-6 h-6 text-luxury-gold-foreground" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('callUs')}</h3>
-            <p className="text-muted-foreground">{t('phone')}</p>
+            <a href={telLink(t('phone'))} className="text-muted-foreground">
+              {t('phone')}
+            </a>
           </div>
 
           <div className="text-center">
@@ -33,9 +36,14 @@ const BusinessInfo = () => {
               <MapPin className="w-6 h-6 text-luxury-gold-foreground" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('visitUs')}</h3>
-            <div className="text-sm text-muted-foreground whitespace-pre-line">
+            <a
+              href={mapsLink(t('address'))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground whitespace-pre-line"
+            >
               {t('address')}
-            </div>
+            </a>
           </div>
 
           <div className="text-center">

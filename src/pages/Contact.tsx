@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { telLink, mailtoLink, mapsLink } from '@/lib/contactLinks';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -176,7 +177,9 @@ const Contact = () => {
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary" />
                     <div>
-                      <p className="font-medium text-foreground">(860) 849-8064</p>
+                      <a href={telLink('(860) 849-8064')} className="font-medium text-foreground">
+                        (860) 849-8064
+                      </a>
                       <p className="text-sm text-muted-foreground">{t('contactPage.contactInfo.phoneNote')}</p>
                     </div>
                   </div>
@@ -184,7 +187,9 @@ const Contact = () => {
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary" />
                     <div>
-                      <p className="font-medium text-foreground">{t('email')}</p>
+                      <a href={mailtoLink(undefined, undefined, t('email'))} className="font-medium text-foreground">
+                        {t('email')}
+                      </a>
                       <p className="text-sm text-muted-foreground">{t('contactPage.contactInfo.emailNote')}</p>
                     </div>
                   </div>
@@ -192,8 +197,17 @@ const Contact = () => {
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-primary mt-1" />
                     <div>
-                      <p className="font-medium text-foreground">{t('contactPage.contactInfo.addressLine1')}</p>
-                      <p className="text-muted-foreground">{t('contactPage.contactInfo.addressLine2')}</p>
+                      <a
+                        href={mapsLink(
+                          `${t('contactPage.contactInfo.addressLine1')} ${t('contactPage.contactInfo.addressLine2')}`
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-foreground"
+                      >
+                        <p>{t('contactPage.contactInfo.addressLine1')}</p>
+                        <p className="text-muted-foreground">{t('contactPage.contactInfo.addressLine2')}</p>
+                      </a>
                       <p className="text-sm text-muted-foreground">{t('contactPage.contactInfo.addressNote')}</p>
                     </div>
                   </div>
