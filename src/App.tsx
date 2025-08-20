@@ -11,7 +11,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Policies from "./pages/Policies";
 import NotFound from "./pages/NotFound";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FloatingCallButton from "@/components/FloatingCallButton";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <FloatingWhatsApp />
+        <FloatingCallButton />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
