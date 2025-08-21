@@ -60,6 +60,16 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+### Instagram Integration
+
+The gallery page pulls images from Instagram using the Basic Display API. Create an access token and expose it to the app via an environment variable:
+
+```bash
+VITE_INSTAGRAM_ACCESS_TOKEN=YOUR_TOKEN_HERE
+```
+
+Add this variable to your `.env` file before running the development server.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/1bfc687c-fea3-46b2-aab0-6cfa5ae7f47e) and click on Share -> Publish.
