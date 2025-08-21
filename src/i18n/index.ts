@@ -278,7 +278,7 @@ const resources = {
         },
         follow: {
           title: "Follow Us",
-          instagram: "@auraessencellc",
+          instagram: "@llcauraessence",
           facebook: "Aura Essence LLC",
           note:
             "Follow us for skincare tips, before & after photos, and special offers!",
@@ -943,7 +943,7 @@ const resources = {
         },
         follow: {
           title: "Síguenos",
-          instagram: "@auraessencellc",
+          instagram: "@llcauraessence",
           facebook: "Aura Essence LLC",
           note:
             "¡Síguenos para consejos de cuidado de la piel, fotos de antes y después, y ofertas especiales!",

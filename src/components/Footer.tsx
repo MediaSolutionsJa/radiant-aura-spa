@@ -21,7 +21,12 @@ const Footer = () => {
               {t('footerDescription')}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-spa-dark-foreground/70 hover:text-luxury-gold transition-colors">
+              <a
+                href="https://www.instagram.com/llcauraessence/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-spa-dark-foreground/70 hover:text-luxury-gold transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="text-spa-dark-foreground/70 hover:text-luxury-gold transition-colors">

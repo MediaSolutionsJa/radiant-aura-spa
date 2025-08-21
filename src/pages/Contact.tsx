@@ -246,8 +246,10 @@ const Contact = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-6">{t('contactPage.follow.title')}</h3>
                 
                 <div className="flex space-x-4">
-                  <a 
-                    href="#" 
+                  <a
+                    href="https://www.instagram.com/llcauraessence/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Instagram className="w-5 h-5" />
