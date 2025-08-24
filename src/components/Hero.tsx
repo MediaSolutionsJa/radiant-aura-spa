@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { telLink } from '@/lib/contactLinks';
 import heroImage from '@/assets/hero-spa.jpg';
 
 const Hero = () => {
@@ -52,6 +53,13 @@ const Hero = () => {
             <Link to="/services">{t('viewServices')}</Link>
           </Button>
         </div>
+
+        <p className="mt-4 text-lg text-spa-dark-foreground">
+          {t('callUs')}:&nbsp;
+          <a href={telLink(t('phone'))} className="underline">
+            {t('phone')}
+          </a>
+        </p>
       </div>
 
       {/* Scroll indicator */}
