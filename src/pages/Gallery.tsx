@@ -12,10 +12,11 @@ const Gallery = () => {
 
   useEffect(() => {
     const token = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN;
-    if (!token) return;
+    const userId = import.meta.env.VITE_INSTAGRAM_USER_ID;
+    if (!token || !userId) return;
 
     fetch(
-      `https://graph.instagram.com/me/media?fields=id,media_url,permalink,caption&access_token=${token}`
+      `https://graph.instagram.com/${userId}/media?fields=id,media_url,permalink,caption&access_token=${token}`
     )
       .then((res) => res.json())
       .then((data) => {
