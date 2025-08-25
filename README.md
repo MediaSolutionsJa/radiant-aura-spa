@@ -62,13 +62,14 @@ This project is built with:
 
 ### Instagram Integration
 
-The gallery page pulls images from Instagram using the Basic Display API. Create an access token and expose it to the app via an environment variable:
+The gallery page pulls images from Instagram using the Basic Display API. Create an access token and retrieve the user ID for [@llcauraessence](https://www.instagram.com/llcauraessence/), then expose both to the app via environment variables:
 
 ```bash
 VITE_INSTAGRAM_ACCESS_TOKEN=YOUR_TOKEN_HERE
+VITE_INSTAGRAM_USER_ID=LLC_AURA_ESSENCE_USER_ID
 ```
 
-Add this variable to your `.env` file before running the development server.
+Add these variables to your `.env` file before running the development server.
 
 ## How can I deploy this project?
 
