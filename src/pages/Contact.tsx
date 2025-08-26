@@ -224,15 +224,15 @@ const Contact = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-foreground">{t('contactPage.hours.monFri')}</span>
-                    <span className="text-muted-foreground">9:00 AM - 7:00 PM</span>
+                    <span className="text-muted-foreground">9:00 AM - 8:00 PM by appointment</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-foreground">{t('contactPage.hours.saturday')}</span>
-                    <span className="text-muted-foreground">9:00 AM - 5:00 PM</span>
+                    <span className="text-muted-foreground">10:00 AM - 9:00 PM by appointment</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-foreground">{t('contactPage.hours.sunday')}</span>
-                    <span className="text-muted-foreground">By Appointment</span>
+                    <span className="text-muted-foreground">10:00 AM - 5:00 PM</span>
                   </div>
                 </div>
                 
