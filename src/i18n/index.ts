@@ -30,9 +30,9 @@ const resources = {
 
       // Hours
       hours: "Hours",
-      monFri: "Mon-Friday: 9am to 8pm by Appointment",
-      saturday: "Saturday: 10am to 9pm by Appointment",
-      sunday: "Sunday: 10am to 5pm",
+      monFri: "Mon-Friday: 9-8pm by Appointment",
+      saturday: "Saturday: 10-9pm by appointment",
+      sunday: "Sunday: 10-5pm",
 
       // Experience
       experience: "6 years combined experience",
@@ -694,9 +694,9 @@ const resources = {
 
       // Hours
       hours: "Horarios",
-      monFri: "Lun-Viernes: 9am a 8pm con Cita",
-      saturday: "Sábado: 10am a 9pm con Cita",
-      sunday: "Domingo: 10am a 5pm",
+      monFri: "Lun-Viernes: 9 a 8pm con Cita",
+      saturday: "Sábado: 10 a 9pm con Cita",
+      sunday: "Domingo: 10 a 5pm",
 
       // Experience
       experience: "6 años de experiencia combinada",
