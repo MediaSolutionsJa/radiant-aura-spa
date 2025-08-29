@@ -42,7 +42,7 @@ const resources = {
       signatureFacial: "AE Signature Facial",
       lymphaticDrainage: "Lymphatic Drainage Facial",
       luxeEventReady: "AE Luxe | Event Ready",
-      ledTherapy: "LED Light Therapy + Massage + Exfoliation with Paraffin + Wax Service",
+      ledTherapy: "LED Light Therapy",
 
       // Pricing
       topLip: "$5",
@@ -410,7 +410,7 @@ const resources = {
             description: "Hydrates and brightens delicate areas with kid-friendly products.",
           },
           {
-            name: "LED Light Therapy + Massage + Exfoliation with Paraffin",
+            name: "LED Light Therapy",
             price: "$55",
             description: "Promotes relaxation while boosting skin renewal and hydration.",
           },
@@ -503,7 +503,8 @@ const resources = {
         addOns: [
           { name: "Eye Treatment", price: "$35" },
           { name: "Lip Treatment", price: "$20" },
-          { name: "LED Light Therapy + Massage + Exfoliation with Paraffin + Wax Service", price: "$15" },
+          { name: "LED Light Therapy", price: "$15" },
+          { name: "Microdermabrasion", price: "$40" },
           { name: "BT Micro", price: "$15" },
           { name: "Galvanic/Radio Therapy", price: "$20" },
           { name: "Gua Sha", price: "$15" },
@@ -706,7 +707,7 @@ const resources = {
       signatureFacial: "Facial Característico AE",
       lymphaticDrainage: "Facial de Drenaje Linfático",
       luxeEventReady: "AE Luxe | Listo para Evento",
-      ledTherapy: "Terapia LED + Masaje + Exfoliación con Parafina + Servicio de Cera",
+      ledTherapy: "Terapia LED",
 
       // Pricing
       topLip: "$5",
@@ -1075,7 +1076,7 @@ const resources = {
             description: "Hidrata e ilumina áreas delicadas con productos aptos para niños.",
           },
           {
-            name: "Terapia LED + Masaje + Exfoliación con Parafina",
+            name: "Terapia LED",
             price: "$55",
             description: "Promueve la relajación mientras estimula la renovación e hidratación de la piel.",
           },
@@ -1168,7 +1169,8 @@ const resources = {
         addOns: [
           { name: "Tratamiento de Ojos", price: "$35" },
           { name: "Tratamiento de Labios", price: "$20" },
-          { name: "Terapia LED + Masaje + Exfoliación con Parafina + Servicio de Cera", price: "$15" },
+          { name: "Terapia LED", price: "$15" },
+          { name: "Microdermoabrasión", price: "$40" },
           { name: "BT Micro", price: "$15" },
           { name: "Terapia Galvánica/Radio", price: "$20" },
           { name: "Gua Sha", price: "$15" },
