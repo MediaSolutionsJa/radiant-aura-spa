@@ -4,7 +4,7 @@ import signatureFacial from '@/assets/signature-facial.jpg';
 import bodyTreatment from '@/assets/body-treatment.jpg';
 import lashExtensions from '@/assets/lash-extensions.jpg';
 import { useTranslation } from 'react-i18next';
-const faceTreatmentImage = '/lovable-uploads/6240f13e-63be-4d28-ab8d-087c1f0a391c.png';
+const faceTreatmentImage = '/uploads/6240f13e-63be-4d28-ab8d-087c1f0a391c.png';
 
 const FeaturedServices = () => {
   const { t } = useTranslation();

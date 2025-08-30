@@ -23,11 +23,11 @@ const Hero = () => {
         
         {/* Right Image */}
         <div className="w-1/2">
-          <img 
-            src="/lovable-uploads/1e304b13-6258-4b34-8967-489197a95378.png" 
-            alt="Spa wellness products and candles" 
-            className="w-full h-full object-cover"
-          />
+            <img
+              src="/uploads/1e304b13-6258-4b34-8967-489197a95378.png"
+              alt="Spa wellness products and candles"
+              className="w-full h-full object-cover"
+            />
           <div className="absolute inset-0 bg-spa-dark/60"></div>
         </div>
       </div>
