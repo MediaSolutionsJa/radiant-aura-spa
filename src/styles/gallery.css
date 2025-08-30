@@ -1,0 +1,16 @@
+/* Grid */
+.gallery-grid { column-width: 280px; column-gap: 16px; }
+@media (max-width: 640px){ .gallery-grid { column-width: 160px; column-gap: 8px; } }
+.gallery-item { break-inside: avoid; margin: 0 0 16px; position: relative; display: block; }
+.gallery-thumb { width: 100%; height: auto; display: block; border-radius: 12px; }
+.gallery-item:hover .overlay { opacity: 1; }
+.overlay { position:absolute; inset:0; background:rgba(0,0,0,.08); border-radius:12px; opacity:0; transition:.2s; }
+/* Lightbox */
+.lightbox[aria-hidden='false'] { position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.9); z-index:1000; }
+.lightbox-content { position:relative; max-width:90vw; max-height:90vh; }
+.lightbox-media { max-width:90vw; max-height:80vh; border-radius:12px; }
+.lightbox-close, .lightbox-prev, .lightbox-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.15); border:none; padding:12px; border-radius:999px; cursor:pointer; color:#fff; }
+.lightbox-close { top:24px; right:24px; transform:none; }
+.lightbox-prev { left:-56px; }
+.lightbox-next { right:-56px; }
+.caption { color:#fff; margin-top:8px; text-align:center; opacity:.9; font-size:14px; }
