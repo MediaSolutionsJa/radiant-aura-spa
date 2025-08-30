@@ -24,12 +24,36 @@ const Contact = () => {
     preferredTime: '',
     message: ''
   });
+  const [status, setStatus] = useState<'success' | 'error' | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // In a real app, you would send this data to your backend
+    try {
+      const response = await fetch('https://formspree.io/f/xyzdwkkv', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          preferredDate: '',
+          preferredTime: '',
+          message: ''
+        });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -63,7 +87,12 @@ const Contact = () => {
             <div className="card-spa">
               <h2 className="text-2xl font-semibold text-foreground mb-6">{t('contactPage.formTitle')}</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                action="https://formspree.io/f/xyzdwkkv"
+                method="POST"
+                className="space-y-6"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="name">{t('contactPage.labels.name')}</Label>
@@ -105,13 +134,21 @@ const Contact = () => {
 
                 <div>
                   <Label htmlFor="service">{t('contactPage.labels.service')}</Label>
-                  <Select required>
+                  <Select
+                    required
+                    value={formData.service}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, service: value })
+                    }
+                  >
                     <SelectTrigger className="mt-1">
                       <SelectValue placeholder={t('contactPage.placeholders.service')} />
                     </SelectTrigger>
                     <SelectContent>
                       {serviceOptions.map((option, index) => (
-                        <SelectItem key={index} value={String(index)}>{option}</SelectItem>
+                        <SelectItem key={index} value={option}>
+                          {option}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -131,13 +168,20 @@ const Contact = () => {
                   </div>
                   <div>
                     <Label htmlFor="preferredTime">{t('contactPage.labels.preferredTime')}</Label>
-                    <Select>
+                    <Select
+                      value={formData.preferredTime}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, preferredTime: value })
+                      }
+                    >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder={t('contactPage.placeholders.time')} />
                       </SelectTrigger>
                       <SelectContent>
                         {timeOptions.map((time, index) => (
-                          <SelectItem key={index} value={String(index)}>{time}</SelectItem>
+                          <SelectItem key={index} value={time}>
+                            {time}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -164,6 +208,17 @@ const Contact = () => {
                 <p className="text-sm text-muted-foreground text-center">
                   {t('contactPage.contactWithin')}
                 </p>
+
+                {status === 'success' && (
+                  <p className="text-green-600 text-center">
+                    {t('contactPage.success')}
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-600 text-center">
+                    {t('contactPage.error')}
+                  </p>
+                )}
               </form>
             </div>
 

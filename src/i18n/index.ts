@@ -261,6 +261,8 @@ const resources = {
         submit: "Submit Booking Request",
         contactWithin:
           "We'll contact you within 24 hours to confirm your appointment.",
+        success: "Thank you for your message! We'll be in touch soon.",
+        error: "Oops! There was a problem submitting your form.",
         contactInfo: {
           title: "Contact Information",
           phoneNote: "Call or text for appointments",
@@ -926,6 +928,8 @@ const resources = {
         submit: "Enviar Solicitud de Reserva",
         contactWithin:
           "Nos pondremos en contacto contigo dentro de 24 horas para confirmar tu cita.",
+        success: "¡Gracias por tu mensaje! Nos pondremos en contacto pronto.",
+        error: "¡Ups! Hubo un problema al enviar tu formulario.",
         contactInfo: {
           title: "Información de Contacto",
           phoneNote: "Llama o envía un texto para citas",
