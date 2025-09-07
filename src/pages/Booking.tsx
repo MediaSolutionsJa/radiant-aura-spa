@@ -63,12 +63,14 @@ const Booking = () => {
 
       const result = await response.json();
 
+
       if (response.ok && result.ok) {
         reset();
         setShowSuccessModal(true);
       } else if (result.code === 'EMAIL_FAILED') {
         toast({
           title: 'Email Error',
+
           description:
             "We received your booking but couldn't send the email notification. We'll check this right away.",
           variant: 'destructive'
