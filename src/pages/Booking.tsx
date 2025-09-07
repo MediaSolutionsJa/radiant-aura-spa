@@ -63,13 +63,24 @@ const Booking = () => {
 
       const result = await response.json();
 
+
       if (response.ok && result.ok) {
         reset();
         setShowSuccessModal(true);
       } else if (result.code === 'EMAIL_FAILED') {
         toast({
           title: 'Email Error',
-          description: "We received your booking but couldn't send the email notification. We'll check this right away.",
+
+          description:
+            "We received your booking but couldn't send the email notification. We'll check this right away.",
+          variant: 'destructive'
+        });
+      } else if (result.code === 'EMAIL_CONFIG') {
+        toast({
+          title: 'Email Sender Not Configured',
+          description:
+            result.message ||
+            'Email sender not configured. Verify your Resend domain or set RESEND_FROM.',
           variant: 'destructive'
         });
       } else {

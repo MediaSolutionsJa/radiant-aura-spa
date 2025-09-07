@@ -18,6 +18,9 @@ const BookingSchema = z.object({
 });
 
 export async function POST(req: Request) {
+
+  let stage: 'start' | 'db' = 'start';
+
   try {
     console.info('[booking] start');
     const body = await req.json();
@@ -56,12 +59,21 @@ export async function POST(req: Request) {
     }
     console.info('[booking] DB insert success', { id: row.id });
 
+    stage = 'db';
+
+
     const from = process.env.RESEND_FROM;
     const to = process.env.BOOKING_NOTIFY_TO;
     if (!from || !to) {
       console.error('[booking] Email config missing', { from, to });
       return new Response(
-        JSON.stringify({ ok: false, code: 'EMAIL_CONFIG' }),
+        JSON.stringify({
+          ok: false,
+          code: 'EMAIL_CONFIG',
+          message:
+            'Email sender not configured. Verify your Resend domain or set RESEND_FROM.',
+        }),
+
         { status: 500 }
       );
     }
@@ -88,13 +100,15 @@ export async function POST(req: Request) {
     return Response.json({ ok: true, id: row.id });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e);
-    const isEmail = msg.includes('Resend');
+
     console.error('[booking] Handler error', msg);
     return new Response(
       JSON.stringify({
         ok: false,
-        code: isEmail ? 'EMAIL_FAILED' : 'UNKNOWN',
-        message: isEmail ? 'Email delivery failed' : 'Unexpected error',
+
+        code: stage === 'db' ? 'EMAIL_FAILED' : 'UNKNOWN',
+        message: stage === 'db' ? 'Email delivery failed' : 'Unexpected error',
+
       }),
       { status: 500 }
     );
