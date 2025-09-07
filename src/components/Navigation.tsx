@@ -49,7 +49,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild className="btn-spa">
-              <Link to="/contact">{t('bookNow')}</Link>
+              <Link to="/booking">{t('bookNow')}</Link>
             </Button>
             <LanguageToggle />
           </div>
@@ -88,7 +88,7 @@ const Navigation = () => {
               ))}
               <div className="px-3 py-2">
                 <Button asChild className="btn-spa w-full">
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>{t('bookNow')}</Link>
+                  <Link to="/booking" onClick={() => setIsOpen(false)}>{t('bookNow')}</Link>
                 </Button>
               </div>
             </div>

@@ -1,0 +1,205 @@
+import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { Resend } from "npm:resend@2.0.0";
+
+const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
+};
+
+interface BookingEmailRequest {
+  fullName: string;
+  email: string;
+  phone?: string;
+  eventType: string;
+  eventDate?: string;
+  message?: string;
+}
+
+const createBookingEmailHtml = (data: BookingEmailRequest): string => {
+  const submittedAt = new Date().toLocaleString('en-US', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  });
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>New Booking Request</title>
+      <style>
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #f9f9f9;
+        }
+        .container {
+          background-color: #ffffff;
+          border-radius: 8px;
+          padding: 30px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+          text-align: center;
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+          border-bottom: 2px solid #f0f0f0;
+        }
+        .header h1 {
+          color: #2c3e50;
+          margin: 0;
+          font-size: 24px;
+        }
+        .content table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+        .content td {
+          padding: 12px 15px;
+          border-bottom: 1px solid #e9ecef;
+          vertical-align: top;
+        }
+        .content td:first-child {
+          font-weight: 600;
+          color: #495057;
+          width: 140px;
+          background-color: #f8f9fa;
+        }
+        .footer {
+          margin-top: 30px;
+          padding-top: 20px;
+          border-top: 1px solid #e9ecef;
+          text-align: center;
+          color: #6c757d;
+          font-size: 14px;
+        }
+        @media (max-width: 600px) {
+          body {
+            padding: 10px;
+          }
+          .container {
+            padding: 20px;
+          }
+          .content td {
+            display: block;
+            width: 100% !important;
+            border: none;
+            padding: 8px 0;
+          }
+          .content td:first-child {
+            background: none;
+            font-weight: 600;
+            color: #495057;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>New Booking Request — ${data.fullName}</h1>
+        </div>
+        
+        <div class="content">
+          <table>
+            <tr>
+              <td>Full Name</td>
+              <td>${data.fullName}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><a href="mailto:${data.email}">${data.email}</a></td>
+            </tr>
+            ${data.phone ? `
+            <tr>
+              <td>Phone</td>
+              <td><a href="tel:${data.phone}">${data.phone}</a></td>
+            </tr>
+            ` : ''}
+            <tr>
+              <td>Event Type</td>
+              <td>${data.eventType}</td>
+            </tr>
+            ${data.eventDate ? `
+            <tr>
+              <td>Event Date</td>
+              <td>${new Date(data.eventDate).toLocaleDateString()}</td>
+            </tr>
+            ` : ''}
+            ${data.message ? `
+            <tr>
+              <td>Message</td>
+              <td>${data.message.replace(/\n/g, '<br>')}</td>
+            </tr>
+            ` : ''}
+            <tr>
+              <td>Submitted</td>
+              <td>${submittedAt}</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="footer">
+          <p>This booking request was submitted via your website contact form.</p>
+          <p>Please respond to the customer within 24 hours for the best experience.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+};
+
+const handler = async (req: Request): Promise<Response> => {
+  // Handle CORS preflight requests
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const bookingData: BookingEmailRequest = await req.json();
+
+    console.log("Received booking request:", bookingData);
+
+    const emailResponse = await resend.emails.send({
+      from: "Aura Essence <bookings@resend.dev>",
+      to: ["essenceaura990@gmail.com"],
+      subject: `New Booking Request — ${bookingData.fullName} (${bookingData.eventType})`,
+      html: createBookingEmailHtml(bookingData),
+    });
+
+    console.log("Email sent successfully:", emailResponse);
+
+    return new Response(JSON.stringify({ success: true, emailResponse }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders,
+      },
+    });
+  } catch (error: any) {
+    console.error("Error in send-booking-email function:", error);
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
+  }
+};
+
+serve(handler);
