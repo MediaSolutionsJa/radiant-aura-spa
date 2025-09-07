@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 const About = () => {
   const { t } = useTranslation();
-  const differenceItems = t('aboutPage.difference.items', {
+  const differenceItems = (t('aboutPage.difference.items', {
     returnObjects: true,
-  }) as Array<{ title: string; description: string }>;
-  const values = t('aboutPage.valuesSection.values', { returnObjects: true }) as string[];
+  }) as any) as Array<{ title: string; description: string }>;
+  const values = (t('aboutPage.valuesSection.values', { returnObjects: true }) as any) as string[];
 
   return (
     <div className="min-h-screen">
@@ -32,7 +32,7 @@ const About = () => {
             <div>
               <h2 className="heading-spa text-foreground mb-6">{t('aboutPage.ourStory.title')}</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                {t('aboutPage.ourStory.paragraphs', { returnObjects: true })
+                {(t('aboutPage.ourStory.paragraphs', { returnObjects: true }) as any as string[])
                   .map((p: string, idx: number) => (
                     <p key={idx}>{p}</p>
                   ))}

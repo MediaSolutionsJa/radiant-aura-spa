@@ -12,8 +12,8 @@ import { telLink, mailtoLink, mapsLink } from '@/lib/contactLinks';
 
 const Contact = () => {
   const { t } = useTranslation();
-  const serviceOptions = t('contactPage.serviceOptions', { returnObjects: true }) as string[];
-  const timeOptions = t('contactPage.timeOptions', { returnObjects: true }) as string[];
+  const serviceOptions = (t('contactPage.serviceOptions', { returnObjects: true }) as any) as string[];
+  const timeOptions = (t('contactPage.timeOptions', { returnObjects: true }) as any) as string[];
 
   const [formData, setFormData] = useState({
     name: '',
@@ -335,7 +335,7 @@ const Contact = () => {
             <h3 className="text-xl font-semibold text-foreground mb-6">{t('contactPage.policies.title')}</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-muted-foreground">
-              {t('contactPage.policies.items', { returnObjects: true }).map(
+              {((t('contactPage.policies.items', { returnObjects: true }) as any) as Array<{ title: string; text: string }>).map(
                 (item: { title: string; text: string }, index: number) => (
                   <div key={index}>
                     <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
