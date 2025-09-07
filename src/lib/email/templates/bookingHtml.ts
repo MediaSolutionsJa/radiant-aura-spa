@@ -1,22 +1,29 @@
-import { BookingFormData } from '@/lib/validation/booking';
-
-export const createBookingEmailHtml = (data: BookingFormData): string => {
-  const submittedAt = new Date().toLocaleString('en-US', {
+export function bookingHtml(payload: {
+  fullName: string;
+  email: string;
+  phone?: string;
+  eventType: string;
+  eventDate: string;
+  message?: string;
+  submittedAtISO: string;
+  origin?: string;
+}) {
+  const submittedAt = new Date(payload.submittedAtISO).toLocaleString('en-US', {
     timeZone: 'UTC',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    timeZoneName: 'short'
+    timeZoneName: 'short',
   });
 
   return `
     <!DOCTYPE html>
     <html>
     <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>New Booking Request</title>
       <style>
         body {
@@ -93,54 +100,53 @@ export const createBookingEmailHtml = (data: BookingFormData): string => {
     <body>
       <div class="container">
         <div class="header">
-          <h1>New Booking Request — ${data.fullName}</h1>
+          <h1>New Booking Request — ${payload.fullName}</h1>
         </div>
-        
         <div class="content">
           <table>
             <tr>
               <td>Full Name</td>
-              <td>${data.fullName}</td>
+              <td>${payload.fullName}</td>
             </tr>
             <tr>
               <td>Email</td>
-              <td><a href="mailto:${data.email}">${data.email}</a></td>
+              <td><a href="mailto:${payload.email}">${payload.email}</a></td>
             </tr>
-            ${data.phone ? `
+            ${payload.phone ? `
             <tr>
               <td>Phone</td>
-              <td><a href="tel:${data.phone}">${data.phone}</a></td>
-            </tr>
-            ` : ''}
+              <td><a href="tel:${payload.phone}">${payload.phone}</a></td>
+            </tr>` : ''}
             <tr>
               <td>Event Type</td>
-              <td>${data.eventType}</td>
+              <td>${payload.eventType}</td>
             </tr>
-            ${data.eventDate ? `
+            ${payload.eventDate ? `
             <tr>
               <td>Event Date</td>
-              <td>${new Date(data.eventDate).toLocaleDateString()}</td>
-            </tr>
-            ` : ''}
-            ${data.message ? `
+              <td>${new Date(payload.eventDate).toLocaleDateString()}</td>
+            </tr>` : ''}
+            ${payload.message ? `
             <tr>
               <td>Message</td>
-              <td>${data.message.replace(/\n/g, '<br>')}</td>
-            </tr>
-            ` : ''}
+              <td>${payload.message.replace(/\n/g, '<br>')}</td>
+            </tr>` : ''}
             <tr>
               <td>Submitted</td>
               <td>${submittedAt}</td>
             </tr>
+            ${payload.origin ? `
+            <tr>
+              <td>Origin</td>
+              <td>${payload.origin}</td>
+            </tr>` : ''}
           </table>
         </div>
-        
         <div class="footer">
           <p>This booking request was submitted via your website contact form.</p>
-          <p>Please respond to the customer within 24 hours for the best experience.</p>
         </div>
       </div>
     </body>
     </html>
   `;
-};
+}

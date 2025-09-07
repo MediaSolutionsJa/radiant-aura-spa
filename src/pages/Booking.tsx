@@ -12,7 +12,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { bookingSchema, type BookingFormData } from '@/lib/validation/booking';
 import { BookingSuccessModal } from '@/components/booking/BookingSuccessModal';
 import { Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 const eventTypes = [
@@ -56,41 +55,39 @@ const Booking = () => {
     setIsSubmitting(true);
 
     try {
-      // Insert into Supabase
-      const { error: dbError } = await supabase
-        .from('bookings')
-        .insert({
-          full_name: data.fullName,
-          email: data.email,
-          phone: data.phone || null,
-          event_type: data.eventType,
-          event_date: data.eventDate || null,
-          message: data.message || null
-        });
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-      if (dbError) {
-        console.error('Database error:', dbError);
+      const result = await response.json();
+
+      if (response.ok && result.ok) {
+        reset();
+        setShowSuccessModal(true);
+      } else if (result.code === 'EMAIL_FAILED') {
+        toast({
+          title: 'Email Error',
+          description:
+            "We received your booking but couldn't send the email notification. We'll check this right away.",
+          variant: 'destructive'
+        });
+      } else if (result.code === 'EMAIL_CONFIG') {
+        toast({
+          title: 'Email Sender Not Configured',
+          description:
+            result.message ||
+            'Email sender not configured. Verify your Resend domain or set RESEND_FROM.',
+          variant: 'destructive'
+        });
+      } else {
         toast({
           title: 'Error',
           description: 'Failed to save booking. Please try again.',
           variant: 'destructive'
         });
-        return;
       }
-
-      // Call edge function to send email
-      const { error: emailError } = await supabase.functions.invoke('send-booking-email', {
-        body: data
-      });
-
-      if (emailError) {
-        console.error('Email error:', emailError);
-        // Don't show error to user if email fails but booking was saved
-      }
-
-      reset();
-      setShowSuccessModal(true);
-      
     } catch (error) {
       console.error('Submission error:', error);
       toast({
