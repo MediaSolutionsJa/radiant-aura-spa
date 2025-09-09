@@ -4,21 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import { useRef, useState } from 'react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { telLink, mailtoLink, mapsLink } from '@/lib/contactLinks';
@@ -35,39 +22,23 @@ const Contact = () => {
     service: '',
     preferredDate: '',
     preferredTime: '',
-    message: '',
+    message: ''
   });
-  const [submitting, setSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const cooldownRef = useRef(false);
+  const [status, setStatus] = useState<'success' | 'error' | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (submitting || cooldownRef.current) return;
-    setSubmitting(true);
-    cooldownRef.current = true;
-    setTimeout(() => {
-      cooldownRef.current = false;
-    }, 5000);
-
-    const form = e.currentTarget;
-    const honeypot = (form.querySelector('input[name="company"]') as HTMLInputElement)?.value?.trim();
-    if (honeypot) {
-      setSubmitting(false);
-      return;
-    }
-
     try {
-      const fd = new FormData(form);
-      const res = await fetch('https://formspree.io/f/xyzdwkkv', {
+      const response = await fetch('https://formspree.io/f/xyzdwkkv', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: fd,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
-      if (res.ok) {
-        setShowSuccess(true);
-        setErrorMsg(null);
+      if (response.ok) {
+        setStatus('success');
         setFormData({
           name: '',
           email: '',
@@ -75,19 +46,13 @@ const Contact = () => {
           service: '',
           preferredDate: '',
           preferredTime: '',
-          message: '',
+          message: ''
         });
-        form.reset();
       } else {
-        const data = await res.json().catch(() => ({}));
-        setErrorMsg(
-          data.error || data.message || 'Something went wrong. Please try again.',
-        );
+        setStatus('error');
       }
     } catch {
-      setErrorMsg('Network error. Please try again.');
-    } finally {
-      setSubmitting(false);
+      setStatus('error');
     }
   };
 
@@ -126,8 +91,6 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                 action="https://formspree.io/f/xyzdwkkv"
                 method="POST"
-                data-form="booking"
-                id="bookingForm"
                 className="space-y-6"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -173,7 +136,6 @@ const Contact = () => {
                   <Label htmlFor="service">{t('contactPage.labels.service')}</Label>
                   <Select
                     required
-                    name="service"
                     value={formData.service}
                     onValueChange={(value) =>
                       setFormData({ ...formData, service: value })
@@ -207,7 +169,6 @@ const Contact = () => {
                   <div>
                     <Label htmlFor="preferredTime">{t('contactPage.labels.preferredTime')}</Label>
                     <Select
-                      name="preferredTime"
                       value={formData.preferredTime}
                       onValueChange={(value) =>
                         setFormData({ ...formData, preferredTime: value })
@@ -240,32 +201,22 @@ const Contact = () => {
                   />
                 </div>
 
-                {/* Honeypot and subject */}
-                <input
-                  type="text"
-                  name="company"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  style={{ position: 'absolute', left: -9999 }}
-                  aria-hidden="true"
-                />
-                <input type="hidden" name="_subject" value="New Booking Request" />
-
-                <Button
-                  type="submit"
-                  className="btn-spa w-full text-lg py-3"
-                  disabled={submitting}
-                >
-                  {submitting ? 'Submitting…' : t('contactPage.submit')}
+                <Button type="submit" className="btn-spa w-full text-lg py-3">
+                  {t('contactPage.submit')}
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
                   {t('contactPage.contactWithin')}
                 </p>
 
-                {errorMsg && (
-                  <p role="alert" className="text-red-600 text-center">
-                    {errorMsg}
+                {status === 'success' && (
+                  <p className="text-green-600 text-center">
+                    {t('contactPage.success')}
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-600 text-center">
+                    {t('contactPage.error')}
                   </p>
                 )}
               </form>
@@ -398,23 +349,6 @@ const Contact = () => {
       </section>
 
       <Footer />
-
-      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
-        <DialogContent className="text-center">
-          <DialogHeader>
-            <div className="text-4xl mb-2" aria-hidden="true">
-              ✔
-            </div>
-            <DialogTitle>Thank you for booking with us</DialogTitle>
-            <DialogDescription>
-              Your request was received. We’ll contact you shortly.
-            </DialogDescription>
-          </DialogHeader>
-          <Button onClick={() => setShowSuccess(false)} className="mt-4">
-            Close
-          </Button>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };
