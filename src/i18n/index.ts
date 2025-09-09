@@ -412,7 +412,7 @@ const resources = {
             description: "Hydrates and brightens delicate areas with kid-friendly products.",
           },
           {
-            name: "LED Light Therapy",
+            name: "LED Light Therapy + Arm/Hand Massage + Exfoliation with Paraffin Wax",
             price: "$55",
             description: "Promotes relaxation while boosting skin renewal and hydration.",
           },
