@@ -23,20 +23,59 @@ const Contact = () => {
     const summaryEl = document.getElementById('bookingSummary') as HTMLElement | null;
     const closeBtn = document.getElementById('bookingCloseModal');
     const pageUrlEl = document.getElementById('bookingPageUrl') as HTMLInputElement | null;
+    const nameEl = document.getElementById('bookingThankYouName') as HTMLElement | null;
+    const confettiCanvas = document.getElementById('aeConfettiCanvas') as HTMLCanvasElement | null;
+    const aeCheck = document.querySelector('.ae-check') as HTMLElement | null;
+    const aeMark = document.querySelector('.ae-check-mark') as SVGPathElement | null;
 
     if (pageUrlEl) pageUrlEl.value = window.location.href;
 
-    function showModal(summaryHtml: string) {
+    function prepCheckmark() {
+      if (!aeMark) return;
+      const len = aeMark.getTotalLength ? aeMark.getTotalLength() : 160;
+      aeMark.style.strokeDasharray = String(len);
+      aeMark.style.strokeDashoffset = String(len);
+      aeCheck?.style?.setProperty?.('--ae-len', String(len));
+    }
+    prepCheckmark();
+
+    function fireConfetti() {
+      const w = window as any;
+      if (w.confetti) {
+        const conf = w.confetti.create(confettiCanvas, { resize: true, useWorker: true });
+        conf({ particleCount: 90, spread: 64, origin: { y: 0.65 } });
+        setTimeout(() =>
+          conf({ particleCount: 60, spread: 80, startVelocity: 45, origin: { y: 0.7 } }),
+          250
+        );
+        setTimeout(() => conf({ particleCount: 80, spread: 50, origin: { x: 0.15, y: 0.6 } }), 450);
+        setTimeout(() => conf({ particleCount: 80, spread: 50, origin: { x: 0.85, y: 0.6 } }), 650);
+      } else {
+        aeCheck?.classList.add('fallback-pop');
+        setTimeout(() => aeCheck?.classList.remove('fallback-pop'), 800);
+      }
+    }
+
+    function showModal(summaryHtml: string, name?: string) {
       if (summaryEl && summaryHtml) summaryEl.innerHTML = summaryHtml;
+      if (nameEl) nameEl.textContent = name && name.trim() ? name.trim() : 'friend';
       if (modal) {
         modal.style.display = 'flex';
         modal.setAttribute('aria-hidden', 'false');
+        aeCheck?.classList.remove('draw');
+        // Force reflow so animation can replay
+        // eslint-disable-next-line no-unused-expressions
+        aeCheck?.offsetWidth;
+        aeCheck?.classList.add('draw');
+        fireConfetti();
+
       }
     }
     function hideModal() {
       if (modal) {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
+
       }
     }
     closeBtn?.addEventListener('click', hideModal);
@@ -54,6 +93,7 @@ const Contact = () => {
       }
       return true;
     }
+
 
     const submitHandler = async (e: Event) => {
       e.preventDefault();
@@ -82,8 +122,10 @@ const Contact = () => {
           const service = (formData.get('service') || '').toString();
           const date = (formData.get('date') || '').toString();
           const time = (formData.get('time') || '').toString();
-          const summary = `\n          <strong>Booking Received</strong><br/>\n          Name: ${name || '—'}<br/>\n          Service: ${service || '—'}<br/>\n          Date: ${date || '—'} at ${time || '—'}<br/><br/>\n          A confirmation email will be sent to you shortly. If you need to make changes, reply to the confirmation email.\n        `;
-          showModal(summary);
+
+          const summary = `\n          <strong>Booking Received</strong><br/>\n          Name: ${name || '—'}<br/>\n          Service: ${service || '—'}<br/>\n          Date: ${date || '—'} at ${time || '—'}<br/><br/>\n          We’ll email you to confirm your appointment time. If you need to adjust anything, reply to that email.\n        `;
+          showModal(summary, name);
+
           form.reset();
           if (statusEl) statusEl.textContent = '';
         } else {
@@ -243,27 +285,105 @@ const Contact = () => {
                 }}
               >
                 <div
-                  style={{
-                    maxWidth: '520px',
-                    width: '92%',
-                    background: '#fff',
-                    borderRadius: '16px',
-                    padding: '24px',
-                  }}
+
+                  className="ae-modal-card"
+                  role="dialog"
+                  aria-labelledby="aeModalTitle"
+                  aria-describedby="aeModalDesc"
                 >
-                  <h3 style={{ margin: '0 0 8px' }}>Thank you for booking with us!</h3>
-                  <p id="bookingSummary" style={{ margin: '0 0 16px' }}>
-                    We’ve received your request. We’ll confirm by email shortly.
+                  <div className="ae-anim-wrap">
+                    {/* Animated Checkmark */}
+                    <svg className="ae-check" viewBox="0 0 120 120" aria-hidden="true">
+                      <circle className="ae-check-ring" cx="60" cy="60" r="54" fill="none" strokeWidth="6" />
+                      <path
+                        className="ae-check-mark"
+                        fill="none"
+                        strokeWidth="6"
+                        d="M34 64 L54 82 L88 44"
+                      />
+                    </svg>
+                  </div>
+
+                  <h3 id="aeModalTitle" className="ae-title">
+                    Thank you, <span id="bookingThankYouName">friend</span>! ✨
+                  </h3>
+                  <p id="bookingDesc" className="ae-sub">
+                    Your booking request has been received. We’ll confirm details by email shortly.
                   </p>
-                  <button
-                    id="bookingCloseModal"
-                    type="button"
-                    style={{ display: 'inline-block' }}
-                  >
-                    Close
-                  </button>
+
+                  <div id="bookingSummary" className="ae-summary">
+                    {/* Summary injected by JS: Name, Service, Date/Time */}
+                  </div>
+
+                  <div className="ae-actions">
+                    <a id="aeViewServices" href="/#services" className="ae-btn ae-btn-secondary">
+                      View Services
+                    </a>
+                    <button id="bookingCloseModal" type="button" className="ae-btn">
+                      Close
+                    </button>
+                  </div>
                 </div>
+
+                {/* Confetti canvas */}
+                <canvas id="aeConfettiCanvas" className="ae-confetti"></canvas>
               </div>
+
+              <style>{`
+/* Card */
+.ae-modal-card{
+  width:min(560px,92%);border-radius:20px;padding:28px 22px;background:
+    linear-gradient(135deg, rgba(255,255,255,.9), rgba(250,245,255,.95));
+  box-shadow:0 20px 60px rgba(0,0,0,.25);backdrop-filter:blur(8px);
+  transform:translateY(12px) scale(.98);opacity:0;animation:ae-in .45s ease forwards;
+}
+
+/* Animated check ring + mark */
+.ae-anim-wrap{display:flex;justify-content:center;margin-bottom:14px}
+.ae-check{width:96px;height:96px}
+.ae-check-ring{stroke:url(#aeCheckGrad), #CFA6FF}
+.ae-check-mark{stroke:#5C3B9E;stroke-linecap:round;stroke-linejoin:round}
+
+/* We’ll define stroke-dash in JS using path length */
+.ae-check.draw .ae-check-mark{animation:ae-draw .7s ease .1s forwards}
+.ae-check.draw .ae-check-ring{animation:ae-pop .5s ease forwards}
+.ae-check.fallback-pop .ae-check-ring{animation:ae-pop .5s ease forwards}
+
+/* Headings & text */
+.ae-title{margin:.25rem 0 .25rem;font-size:1.35rem;letter-spacing:.2px;text-align:center;color:#3b2a66}
+.ae-sub{margin:0 0 .6rem;text-align:center;color:#5b4a86}
+.ae-summary{background:#fff;border:1px solid #eee;border-radius:14px;padding:12px 14px;margin:.3rem 0 1rem;color:#3b2a66}
+
+/* Buttons */
+.ae-actions{display:flex;gap:.6rem;justify-content:center}
+.ae-btn{appearance:none;border:0;border-radius:12px;padding:.7rem 1rem;cursor:pointer;
+  background:#6c42d8;color:#fff;font-weight:600;transition:transform .15s ease, box-shadow .15s ease}
+.ae-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(108,66,216,.25)}
+.ae-btn-secondary{background:#efe8ff;color:#4a2fb3}
+
+/* Canvas on top for confetti but click-through to card area is okay */
+.ae-confetti{position:absolute;inset:0;pointer-events:none}
+
+/* Animations */
+@keyframes ae-in {to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes ae-draw {from{stroke-dashoffset:var(--ae-len,160)} to{stroke-dashoffset:0}}
+@keyframes ae-pop {0%{transform:scale(.8);opacity:.5} 100%{transform:scale(1);opacity:1}}
+
+@media (prefers-reduced-motion: reduce){
+  .ae-modal-card{animation:none;opacity:1;transform:none}
+  .ae-check.draw .ae-check-mark{animation:none}
+}
+              `}</style>
+
+              <svg width="0" height="0" style={{ position: 'absolute' }}>
+                <defs>
+                  <linearGradient id="aeCheckGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#E9D8FD" />
+                    <stop offset="100%" stopColor="#C4B5FD" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
             </div>
 
             {/* Contact Information */}
