@@ -68,12 +68,14 @@ const Contact = () => {
         aeCheck?.offsetWidth;
         aeCheck?.classList.add('draw');
         fireConfetti();
+
       }
     }
     function hideModal() {
       if (modal) {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
+
       }
     }
     closeBtn?.addEventListener('click', hideModal);
@@ -91,6 +93,7 @@ const Contact = () => {
       }
       return true;
     }
+
 
     const submitHandler = async (e: Event) => {
       e.preventDefault();
@@ -119,8 +122,10 @@ const Contact = () => {
           const service = (formData.get('service') || '').toString();
           const date = (formData.get('date') || '').toString();
           const time = (formData.get('time') || '').toString();
+
           const summary = `\n          <strong>Booking Received</strong><br/>\n          Name: ${name || '—'}<br/>\n          Service: ${service || '—'}<br/>\n          Date: ${date || '—'} at ${time || '—'}<br/><br/>\n          We’ll email you to confirm your appointment time. If you need to adjust anything, reply to that email.\n        `;
           showModal(summary, name);
+
           form.reset();
           if (statusEl) statusEl.textContent = '';
         } else {
@@ -280,6 +285,7 @@ const Contact = () => {
                 }}
               >
                 <div
+
                   className="ae-modal-card"
                   role="dialog"
                   aria-labelledby="aeModalTitle"
@@ -377,6 +383,7 @@ const Contact = () => {
                   </linearGradient>
                 </defs>
               </svg>
+
             </div>
 
             {/* Contact Information */}
